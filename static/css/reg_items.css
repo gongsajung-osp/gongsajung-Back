@@ -1,318 +1,157 @@
-input,
-select,
-option,
-textarea,
-.product-price,
-.won2,
-.won,
-.product-price-in,
-.product-deli,
-.deli-type {
-    font-family: 'Pretendard-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    font-size: 1em;
-    color: #757575;
-}
-
+/*
+상단 네비
+*/
 .menu-history,
 .menu-manage-items,
 .menu-my-profile {
-    border: 1px solid #cccccc;
-    background-color: #e6e6e6;
-    width: 125px;
-    height: 40px;
-    border-radius: 150px 150px 0 0;
-    margin: 0;
+  border: 1px solid #cccccc;
+  background-color: #e6e6e6;
+  width: 125px;
+  height: 40px;
+  border-radius: 150px 150px 0 0;
+  margin: 0;
 }
 
 .menu-reg-items:hover,
 .menu2:hover,
 .menu3:hover,
 .menu4:hover {
-    border: 1px solid #fea84d;
-    background-color: #fea84d;
-    width: 125px;
-    height: 40px;
-    border-radius: 150px 150px 0 0;
-    margin: 0;
+  border: 1px solid #fea84d;
+  background-color: #fea84d;
+  width: 125px;
+  height: 40px;
+  border-radius: 150px 150px 0 0;
+  margin: 0;
+}
+
+input::placeholder {
+  color: #ccc;
 }
 
 .menu-reg-items {
-    border: 1px solid #fea84d;
-    background-color: #fea84d;
-    width: 125px;
-    height: 40px;
-    border-radius: 150px 150px 0 0;
-    margin: 0;
+  border: 1px solid #fea84d;
+  background-color: #fea84d;
+  width: 125px;
+  height: 40px;
+  border-radius: 150px 150px 0 0;
+  margin: 0;
 }
 
 .menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-    padding-top: 30px;
-    border-bottom: 1px solid #cccccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  padding-top: 30px;
+  border-bottom: 1px solid #cccccc;
 }
 
 .menu div {
-    margin: 0;
+  margin: 0;
 }
 
 .menu a {
-    display: block;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-}
-
-.product-up-name {
-    display: flex;
-    align-items: left;
-    border: 1.5px solid #cccccc;
-    padding: 5px;
-    width: 100%;
-    max-width: 450px;
-}
-
-.product-name {
-    border: none;
-    outline: none;
-    padding: 7px;
+  display: block;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
 }
 
 .context {
-    width: 500px;
-    padding: 20px;
-    background-color: white;
-    margin: 0 auto;
+  display: block;
+  margin-left: 27%;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: auto;
+  position: relative;
+  /* 필요에 따라 absolute, fixed로 변경 */
+  z-index: 10;
+  /* 다른 요소보다 위에 오도록 */
 }
 
-.product-info-top {
-    display: flex;
-    align-items: left;
-    padding: 0;
-    margin: 0;
+.product-label {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #454545;
+  padding-right: 7px;
 }
 
-.product-up-category {
-    display: flex;
-    align-items: left;
-    padding: 0;
-    margin: 0;
+.input-box {
+  padding: 8px 15px;
+  outline: none;
+  border: 1px solid #adadad;
+  border-radius: 3px;
 }
 
-.product-category1 {
-    margin: 15px 20px 15px 0;
-    padding: 7px;
-    border: 1.5px solid #cccccc;
+input {
+  font-size: 15px;
 }
 
-#product-category-name {
-    display: none;
+select {
+  display: inline-block;
+  width: auto;
+  padding: 5px 10px;
+  font-size: 12px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.event-tag {
-    display: flex;
-    align-items: left;
-    margin: 15px 20px 15px 0;
-    padding: 7px;
-    border: 1.5px solid #cccccc;
-    width: 100%;
-    max-width: 332px;
-}
-
-.event-name {
-    border: none;
-    outline: none;
-    padding-left: 5px;
-    margin: 0;
-}
-
-.product-up-explain {
-    display: flex;
-    align-items: left;
-    border: 1.5px solid #cccccc;
-    padding: 5px;
-    width: 100%;
-    max-width: 450px;
-    margin: 15px 0;
-}
-
-.product-explain {
-    border: none;
-    outline: none;
-    padding: 7px;
-    resize: none;
-    /* 크기 조정 비활성화 */
-    overflow: auto;
-    /* 필요 시 스크롤 동작 유지 */
-}
-
-.product-img {
-    display: flex;
-    width: 125px;
-    height: 125px;
-    background-color: #e6e6e6;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.product-img-in {
-    display: flex;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #b5b5b5;
-    font-size: 60px;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    color: white;
-    font-weight: 900;
-}
-
-.product-up-price {
-    display: flex;
-    align-items: center;
-}
-
-.product-price {
-    display: flex;
-    border: 1.5px solid #ee7878;
-    padding: 12px;
-    margin-right: 15px;
-    justify-content: center;
-    align-items: center;
-}
-
-.product-price-A {
-    display: flex;
-    align-items: center;
-    border: 1.5px solid #cccccc;
-    padding: 12px;
-}
-
-.product-price-in {
-    border: none;
-    outline: none;
-    width: 80px;
-}
-
-.won {
-    margin-left: 5px;
-}
-
-.deli-check {
-    display: none;
-}
-
-.product-up-deli {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.product-deli {
-    margin: 0;
-    font-weight: bold;
-}
-
-.deli-type {
-    padding: 10px 20px;
-    border: 1.5px solid #cccccc;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #757575;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.deli-check:checked+label {
-    background-color: #fea84d;
-    color: white;
-    border-color: #fea84d;
-}
-
-.deli-type:hover {
-    background-color: #f5a76d;
-    color: white;
-    border-color: #f5a76d;
-}
-
-#deli-price {
-    display: none !important;
-    margin-left: 10px;
-    padding: 5px;
-    border: 1.5px solid #cccccc;
-    display: flex;
-    align-items: center;
-}
-
-.deli-price-A {
-    margin-right: 10px;
-    padding: 7px;
-    border-radius: 20px;
-    background-color: #fea84d;
-    color: white;
-    font-size: 0.9em;
-}
-
-.deli-price-B {
-    display: flex;
-    align-items: center;
-    border: 1.5px solid #cccccc;
-    padding: 5px;
-}
-
-.deli-price-in {
-    border: none;
-    outline: none;
-    width: 70px;
-    text-align: right;
+input[type="number"] {
+  -moz-appearance: textfield;
+  /* Firefox에서 스피너 제거 */
+  -webkit-appearance: none;
+  /* Chrome, Safari에서 스피너 제거 */
+  appearance: none;
+  /* 최신 브라우저용 */
 }
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  /* 스피너 제거 */
+  margin: 0;
+  /* 여백 제거 */
 }
 
-.deli-check {
-    display: none;
+textarea {
+  overflow: hidden;
+  /* 스크롤바를 숨김 */
+  resize: none;
+  /* 사용자가 크기 조절하지 못하도록 설정 */
 }
 
-.won2 {
-    margin-left: 5px;
-    font-size: 0.9em;
+.product-deli {
+  display: flex;
+  gap: 10px;
 }
 
-.product-upload {
-    margin: 20px 0 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.deli-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .submit-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background-color: #656565;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  border:none;
+  padding:7px 12px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  color:white;
+  background-color: #fea84d;
+  border-radius: 3px;
 }
 
 .submit-btn:hover {
-    background-color: #343434;
+  background-color: #ff982a;
 }

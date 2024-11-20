@@ -24,82 +24,86 @@
 </div>
 
 <div class="context">
-  <form action="/submit_item" method="get">
+  <form action="/submit_item" method="post">
     <!-- 상품명 -->
-    <div class="product-up-name">
-      <label for="product-name"></label>
-      <input id="product-name" class="product-name" type="text" name="product_name" placeholder="상품명">
+    <div class="category-name" class="product-label">
+      <label for="product-name" class="product-label">상품명</label>
+      <input id="product-name" class="input-box" type="text" name="product_name" placeholder="상품명을 입력하세요">
     </div>
-    
-    <!-- 카테고리 & 행사명 -->
-    <div class="product-info-top">
-      <div class="product-up-category">
-        <label for="product-category"></label>
-        <select id="product-category" class="product-category1" name="product_category">
-          <option value="" selected disabled>카테고리</option>
-          <option value="ctgr-knit">뜨개</option>
-          <option value="ctgr-sticker">스티커</option>
-          <option value="ctgr-stationery">문구</option>
-          <option value="ctgr-postcard">엽서</option>
-          <option value="ctgr-pottery">도자기</option>
-          <option value="ctgr-daily">생활용품</option>
-          <option value="ctgr-food">먹거리</option>
-          <option value="ctgr-poster">포스터</option>
-          <option value="ctgr-glass">유리</option>
-          <option value="ctgr-beads">비즈</option>
-          <option value="ctgr-leather">가죽</option>
-          <option value="ctgr-felt">펠트</option>
-        </select>
-      </div>
-      <div class="event-tag">
-        <label for="event-name"></label>
-        <input id="event-name" class="event-name" type="text" name="event_name" placeholder="행사명">
-      </div>
-    </div>
+    <br>
+
+    <!-- 카테고리 -->
+    <div class="product-category">
+      <label for="product-category" class="product-label">카테고리</label>
+      <select id="product-category" class="product-category1" name="product_category">
+        <option value="" style="display: none;" selected disabled>카테고리</option>
+        <option value="knit">뜨개</option>
+        <option value="sticker">스티커</option>
+        <option value="stationery">문구</option>
+        <option value="postcard">엽서</option>
+        <option value="pottery">도자기</option>
+        <option value="daily">생활용품</option>
+        <option value="food">먹거리</option>
+        <option value="poster">포스터</option>
+        <option value="glass">유리</option>
+        <option value="beads">비즈</option>
+        <option value="leather">가죽</option>
+        <option value="felt">펠트</option>
+      </select>
+    </div><br>
+
+    <!-- 이벤트명 -->
+    <div class="event-tag">
+      <label for="event-name" class="product-label">행사명</label>
+      <input id="event-name" class="input-box" type="text" name="event_name" placeholder="행사명을 입력하세요">
+    </div><br>
 
     <!-- 상품 이미지 -->
-    <div class="product-up-img">
-      <label for="product-img" class="product-img">
-        <input id="product-img" style="display: none;" type="file" name="product_image" accept="image/*">
-        <div class="product-img-in">+</div>
-      </label>
-    </div>
+    <div class="product-img">
+      <label for="product-img" class="product-label">사진</label>
+      <input id="product-img" type="file" name="product_image" accept="image/*">
+      <div class="product-img-in"></div>
+    </div><br>
 
     <!-- 상품 설명 -->
-    <div class="product-up-explain">
-      <label for="product-explain"></label>
-      <textarea id="product-explain" class="product-explain" name="product_explain" cols="300" rows="7" placeholder="상품 설명"></textarea>
-    </div>
+    <div class="product-explain">
+      <label for="product-explain" class="product-label">상품 설명</label>
+      <textarea id="product-explain" class="input-box" name="product_explain" cols="67" rows="7"
+        placeholder="상품 설명"></textarea>
+    </div><br>
 
     <!-- 가격 -->
-    <div class="product-up-price">
-      <label for="product-price"></label>
-      <div class="product-price-A">
-        <input id="product-price" class="product-price-in" type="number" name="product_price" placeholder="가격">
-        <span class="won">원</span>
-      </div>
+    <div class="product-price">
+      <label for="product-price" class="product-label">가격</label>
+      <input id="product-price" class="input-box" type="number" name="product_price" placeholder="가격">
+      <span class="won">원</span>
     </div> <br>
 
     <!-- 배송 -->
-    <div class="product-up-deli">
-      <div class="product-deli">배송</div>
-      
+    <div class="product-deli">
+      <span class="product-label">배송</span>
+
       <!-- 직거래 -->
-      <input id="deli-direct" type="checkbox" class="deli-check" name="delivery[]" value="직거래">
+      <input id="deli-direct" type="checkbox" class="deli-btn" name="delivery[]" value="직거래">
       <label for="deli-direct" class="deli-type">직거래</label>
-      
+
       <!-- 택배 -->
-      <input id="deli-delivery" type="checkbox" class="deli-check" name="delivery[]" value="택배">
+      <input id="deli-delivery" type="checkbox" class="deli-btn" name="delivery[]" value="택배">
       <label for="deli-delivery" class="deli-type">택배</label>
-      
+
       <!-- 우편 -->
-      <input id="deli-mail" type="checkbox" class="deli-check" name="delivery[]" value="우편">
+      <input id="deli-mail" type="checkbox" class="deli-btn" name="delivery[]" value="우편">
       <label for="deli-mail" class="deli-type">우편</label>
+    </div> <br>
+
+    <div class="seller-phone">
+      <label for="phone" class="product-label">연락처</label>
+      <input id="phone" class="input-box" type="text" name="product_name" placeholder=" - 제외하고 숫자만 입력">
     </div>
-     <br>
-    <div class="product-upload">
-      <button type="submit" class="submit-btn">등록</button>
-    </div>
+
+    <br>
+    <button type="submit" class="submit-btn">등록</button>
+
   </form>
 </div>
 <br><br>

@@ -1,0 +1,76 @@
+{% extends "index_2.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/reg_items.css') }}">
+{% endblock %}
+
+{% block ul %}
+{% endblock %}
+
+{% block section %}
+<div class="menu">
+  <div class="menu1">
+    <a href="/reg_items">상품 등록</a>
+  </div>
+  <div class="menu2">
+    <a href="/history">구매내역</a>
+  </div>
+  <div class="menu3">
+    <a href="">상품 관리</a>
+  </div>
+  <div class="menu4">
+    <a href="">내 프로필</a>
+  </div>
+</div>
+
+<div class="container">
+  <form action="/submit_item" method="get">
+    <input class="product-name" type="text" name="" placeholder="상품명">
+    <select class="product-category1" name="product-category">
+      <option value="" selected disabled>카테고리</option>
+      <option value="ctgr-knit">뜨개</option>
+      <option value="ctgr-sticker">스티커</option>
+      <option value="ctgr-stationery">문구</option>
+      <option value="ctgr-postcard">엽서</option>
+      <option value="ctgr-pottery">도자기</option>
+      <option value="ctgr-daily">생활용품</option>
+      <option value="ctgr-food">먹거리</option>
+      <option value="ctgr-poster">포스터</option>
+      <option value="ctgr-glass">유리</option>
+      <option value="ctgr-beads">비즈</option>
+      <option value="ctgr-leather">가죽</option>
+      <option value="ctgr-felt">펠트</option>
+    </select>
+    <input class="event-name" type="text" name="" placeholder="행사명">
+    <input id="product-img" style="display: none;" type="file" accept="image/*">
+    <label for="product-img" class="product-img">
+      <div class="product-img-in">+</div>
+    </label>
+    <textarea class="product-explain" name="" cols="300" rows="7" placeholder="상품 설명"></textarea>
+    <div class="product-price-A">
+      <input class="product-price-in" type="number" name="">
+      <span class="won">원</span>
+    </div>
+    <div class="product-deli">배송</div>
+    <label class="deli-type">
+      <input type="checkbox" class="deli-check" name="deli" value="직거래"> 직거래
+    </label>
+    <label class="deli-type">
+      <input type="checkbox" class="deli-check" name="deli" value="택배"> 택배
+    </label>
+    <label class="deli-type">
+      <input type="checkbox" class="deli-check" name="deli" value="우편"> 우편
+    </label>
+    <div id="deli-price" class="deli-hidden">
+      <div class="deli-price-A">배송비</div>
+      <div class="deli-price-B">
+        <input class="deli-price-in" type="number" name="">
+        <span class="won2">원</span>
+      </div>
+    </div>
+    <br><br>
+    <label class="submit-btn">
+      <input class="submit-btn-in" type="submit" value="등록"> 등록
+    </label>
+  </form>
+</div>

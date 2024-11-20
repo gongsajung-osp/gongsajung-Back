@@ -1,4 +1,13 @@
-input, select, option, textarea, .product-price, .won2, .won, .product-price-in, .product-deli, .deli-type {
+input,
+select,
+option,
+textarea,
+.product-price,
+.won2,
+.won,
+.product-price-in,
+.product-deli,
+.deli-type {
     font-family: 'Pretendard-Regular';
     src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
@@ -7,26 +16,34 @@ input, select, option, textarea, .product-price, .won2, .won, .product-price-in,
     color: #757575;
 }
 
-.menu2, .menu3, .menu4 {
+.menu-history,
+.menu-manage-items,
+.menu-my-profile {
     border: 1px solid #cccccc;
     background-color: #e6e6e6;
-    width: 125px; height:40px;
+    width: 125px;
+    height: 40px;
     border-radius: 150px 150px 0 0;
     margin: 0;
 }
 
-.menu1:hover, .menu2:hover, .menu3:hover, .menu4:hover {
+.menu-reg-items:hover,
+.menu2:hover,
+.menu3:hover,
+.menu4:hover {
     border: 1px solid #fea84d;
     background-color: #fea84d;
-    width: 125px; height:40px;
+    width: 125px;
+    height: 40px;
     border-radius: 150px 150px 0 0;
     margin: 0;
 }
 
-.menu1 {
+.menu-reg-items {
     border: 1px solid #fea84d;
     background-color: #fea84d;
-    width: 125px; height:40px;
+    width: 125px;
+    height: 40px;
     border-radius: 150px 150px 0 0;
     margin: 0;
 }
@@ -77,32 +94,42 @@ input, select, option, textarea, .product-price, .won2, .won, .product-price-in,
 .product-info-top {
     display: flex;
     align-items: left;
-    padding: 0; margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .product-up-category {
     display: flex;
     align-items: left;
-    padding: 0; margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .product-category1 {
-    margin: 15px 20px 15px 0; padding: 7px;
+    margin: 15px 20px 15px 0;
+    padding: 7px;
     border: 1.5px solid #cccccc;
+}
+
+#product-category-name {
+    display: none;
 }
 
 .event-tag {
     display: flex;
     align-items: left;
-    margin: 15px 20px 15px 0; padding: 7px;
+    margin: 15px 20px 15px 0;
+    padding: 7px;
     border: 1.5px solid #cccccc;
     width: 100%;
     max-width: 332px;
 }
 
 .event-name {
-    border: none; outline: none;
-    padding-left: 5px; margin: 0;
+    border: none;
+    outline: none;
+    padding-left: 5px;
+    margin: 0;
 }
 
 .product-up-explain {
@@ -119,11 +146,16 @@ input, select, option, textarea, .product-price, .won2, .won, .product-price-in,
     border: none;
     outline: none;
     padding: 7px;
+    resize: none;
+    /* 크기 조정 비활성화 */
+    overflow: auto;
+    /* 필요 시 스크롤 동작 유지 */
 }
 
 .product-img {
     display: flex;
-    width: 125px; height: 125px;
+    width: 125px;
+    height: 125px;
     background-color: #e6e6e6;
     cursor: pointer;
     align-items: center;
@@ -133,7 +165,8 @@ input, select, option, textarea, .product-price, .won2, .won, .product-price-in,
 
 .product-img-in {
     display: flex;
-    width: 60px; height: 60px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background-color: #b5b5b5;
     font-size: 60px;
@@ -151,7 +184,7 @@ input, select, option, textarea, .product-price, .won2, .won, .product-price-in,
 
 .product-price {
     display: flex;
-    border: 1.5px solid #cccccc;
+    border: 1.5px solid #ee7878;
     padding: 12px;
     margin-right: 15px;
     justify-content: center;
@@ -169,39 +202,48 @@ input, select, option, textarea, .product-price, .won2, .won, .product-price-in,
     border: none;
     outline: none;
     width: 80px;
-    text-align: right;
 }
 
 .won {
     margin-left: 5px;
 }
 
+.deli-check {
+    display: none;
+}
+
 .product-up-deli {
-    margin: 15px 0;
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
 .product-deli {
-    display: flex;
-    border: 1.5px solid #cccccc;
-    padding: 12px;
-    margin-right: 15px;
-    justify-content: center;
-    align-items: center;
+    margin: 0;
+    font-weight: bold;
 }
 
 .deli-type {
-    padding: 12px;
-    margin-right: 10px;
+    padding: 10px 20px;
     border: 1.5px solid #cccccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #757575;
     cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.deli-check:checked+label {
+    background-color: #fea84d;
+    color: white;
+    border-color: #fea84d;
 }
 
 .deli-type:hover {
-    background-color: #fea84d;
+    background-color: #f5a76d;
     color: white;
-    border: 1.5px solid #fea84d;
+    border-color: #f5a76d;
 }
 
 #deli-price {
@@ -236,6 +278,12 @@ input, select, option, textarea, .product-price, .won2, .won, .product-price-in,
     text-align: right;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .deli-check {
     display: none;
 }
@@ -253,14 +301,18 @@ input, select, option, textarea, .product-price, .won2, .won, .product-price-in,
 }
 
 .submit-btn {
-    padding: 5px 20px;
-    border-radius: 30px;
-    background-color: #fea84d;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
     color: white;
-    font-size: 1.2rem;
+    background-color: #656565;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.submit-btn-in {
-    display: none;
+.submit-btn:hover {
+    background-color: #343434;
 }

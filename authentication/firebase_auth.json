@@ -1,0 +1,10 @@
+{
+  "apiKey": "AIzaSyAzpxsH3afMdCwwuQO27NwWbWr08sGhENc",
+  "authDomain": "tiger-market.firebaseapp.com",
+  "databaseURL": "https://tiger-market-default-rtdb.firebaseio.com",
+  "projectId": "tiger-market",
+  "storageBucket": "tiger-market.firebasestorage.app",
+  "messagingSenderId": "1064996100183",
+  "appId": "1:1064996100183:web:ab58f70802428e62d0eb12",
+  "measurementId": "G-9QB4C31VF8"
+}

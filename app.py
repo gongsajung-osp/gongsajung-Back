@@ -1,10 +1,14 @@
 from flask import Flask, render_template, request
+from database import DBhandler
+import sys
 
 application = Flask(__name__)
 
+DB = DBhandler
+
 @application.route("/")
 def start():
-    return render_template("landing.html")
+    return render_template("reg_items.html")
 
 @application.route("/landing")
 def view_landing():
@@ -57,14 +61,15 @@ def reg_item_submit():
     status=request.args.get("status")
     phone=request.args.get("phone")
     print(name,seller,addr,email,category,card,status,phone)
-#main/sub category, prcie 추가로 넘겨야 함
+#main/sub category, price 추가로 넘겨야 함
 
 @application.route("/submit_item_post", methods=['POST'])
 def reg_item_submit_post():
     image_file=request.files["file"]
     image_file.save("static/images/{}".format(image_file.filename))
-    
     data=request.form
+    DB.inset_item(data['name'], data, image_file.filename)
+    
     return render_template("submit_item_result.html", data=data, img_path="static/images/{}".format(image_file.filename))
 
 if __name__=="__main__":

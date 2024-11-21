@@ -16,6 +16,11 @@
         <span class="setting">
           <img src="static/images/search-icon.png" alt="setting icon" onclick="settingToggleDropdown(event)">
           <ul class="dropdown-setting">
+            {% if session['user_id'] %}
+            <li><b>{{session['user_id']}}님 반갑습니다!</b><br><br><br><a href="/logout"> 로그아웃</a></li><br>
+            {% else %}
+            <li><a href="/login">로그인</a></li><br>
+            {% endif %}
             <li><a href="/reg_items">상품 등록</a></li><br>
             <li><a href="">구매 내역</a></li><br>
             <li><a href="">리뷰 관리</a></li><br>
@@ -43,40 +48,40 @@
           <ul style="list-style: none;">
             <li class="">
               <a href="/index">뜨개</a>
-              </li>
-              <li class>
-                <a href="/index">스티커</a>
-              </li>
-              <li class>
-                <a href="/index">문구</a>
-              </li>
-              <li class>
-                <a href="/index">엽서</a>
-              </li>
-              <li class>
-                <a href="/index">도자기</a>
-              </li>
-              <li class>
-                <a href="/index">생활용품</a>
-              </li>
-              <li class>
-                <a href="/index">먹거리</a>
-              </li>
-              <li class>
-                <a href="/index">포스터</a>
-              </li>
-              <li class>
-                <a href="/index">유리</a>
-              </li>
-              <li class>
-                <a href="/index">비즈</a>
-              </li>
-              <li class>
-                <a href="/index">가죽</a>
-              </li>
-              <li class>
-                <a href="/index">펠트</a>
-              </li>
+            </li>
+            <li class>
+              <a href="/index">스티커</a>
+            </li>
+            <li class>
+              <a href="/index">문구</a>
+            </li>
+            <li class>
+              <a href="/index">엽서</a>
+            </li>
+            <li class>
+              <a href="/index">도자기</a>
+            </li>
+            <li class>
+              <a href="/index">생활용품</a>
+            </li>
+            <li class>
+              <a href="/index">먹거리</a>
+            </li>
+            <li class>
+              <a href="/index">포스터</a>
+            </li>
+            <li class>
+              <a href="/index">유리</a>
+            </li>
+            <li class>
+              <a href="/index">비즈</a>
+            </li>
+            <li class>
+              <a href="/index">가죽</a>
+            </li>
+            <li class>
+              <a href="/index">펠트</a>
+            </li>
           </ul>
         </nav>
 

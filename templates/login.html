@@ -13,16 +13,24 @@
   <div class="container">
     <img src="static/images/temp_tiger.jpeg" class="mascot-icon">
 
-    <form class="login-form">
-      <input type="text" placeholder="아이디" maxlength="50" pattern="[A-Za-z0-9]+" required>
-      <input type="password" placeholder="패스워드" maxlength="50" pattern="[A-Za-z0-9]+" required>
-      <button type="submit">로그인<a href="/index">실험용 링크</a></button>
+    {% with mesg = get_flashed_messages() %}
+    {% if mesg !=[] %}
+    <script>alert("{{ mesg[0] }}")</script>
+    {% endif %}
+    {% endwith %}
 
-      <div class="login-links">
-        <a href="#">회원가입</a>
-        <a href="#">아이디/비번 찾기</a>
-      </div>
+    <form class="login-form" action=“/login_confirm” method="post">
+      <input type="text" placeholder="아이디" name="user_id" maxlength="50" pattern="[A-Za-z0-9]+" required>
+      <input type="password" placeholder="패스워드" name="password" maxlength="50" pattern="[A-Za-z0-9]+" required>
+      <button type="submit">로그인<a href="/index">실험용 링크</a></button>
     </form>
+
+    <div class="login-links">
+      <a href="/signup">
+        <button onclick="/signup">회원가입</button>
+      </a>
+      <a href="#">아이디/비번 찾기</a>
+    </div>
   </div>
 </body>
 

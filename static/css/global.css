@@ -143,3 +143,11 @@ nav li a {
   text-decoration: none;
   color: black;
 }
+
+b {
+  background-color: #aaa;
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+}

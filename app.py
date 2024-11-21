@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, redirect, url_for, session
 from database import DBhandler
+import hashlib
 import sys
 
 application = Flask(__name__)
+application.config["SECRET_KEY"] = "helloosp"
 
-DB = DBhandler
+DB = DBhandler()
 
 
 @application.route("/")
@@ -32,6 +34,26 @@ def view_login():
     return render_template("login.html")
 
 
+@application.route("/login_confirm", methods=["POST"])
+def login_user():
+    id_ = request.form["user_id"]
+    pw = request.form["password"]
+    pw_hash = hashlib.sha256(pw.encode("utf-8")).hexdigest()
+
+    if DB.find_user(id_, pw_hash):
+        session["user_id"] = id_
+        return redirect(url_for("view_index"))
+    else:
+        flash("Wrong ID or PW!")
+        return render_template("login.html")
+
+
+@application.route("/logout")
+def logout_user():
+    session.clear()
+    return redirect(url_for("view_landing"))
+
+
 @application.route("/item")
 def view_item():
     return render_template("item.html")
@@ -40,6 +62,19 @@ def view_item():
 @application.route("/signup")
 def view_signup():
     return render_template("signup.html")
+
+
+@application.route("/signup_post", methods=["POST"])
+def register_user():
+    data = request.form
+    pw = request.form["password"]
+    pw_hash = hashlib.sha256(pw.encode("utf-8")).hexdigest()
+
+    if DB.insert_user(data, pw_hash):
+        return render_template("login.html")
+    else:
+        flash("user id already exist!")
+        return render_template("signup.html")
 
 
 @application.route("/review")
@@ -84,7 +119,7 @@ def reg_item_submit_post():
     image_file = request.files["file"]
     image_file.save("static/images/{}".format(image_file.filename))
     data = request.form
-    DB.inset_item(data["name"], data, image_file.filename)
+    DB.inset_item(data["product_name"], data, image_file.filename)
 
     return render_template(
         "submit_item_result.html",

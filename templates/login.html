@@ -19,16 +19,16 @@
     {% endif %}
     {% endwith %}
 
-    <form class="login-form" action=“/login_confirm” method="post">
+    <form class="login-form" action="/login_confirm" method="post">
       <input type="text" placeholder="아이디" name="user_id" maxlength="50" pattern="[A-Za-z0-9]+" required>
       <input type="password" placeholder="패스워드" name="password" maxlength="50" pattern="[A-Za-z0-9]+" required>
-      <button type="submit">로그인<a href="/index">실험용 링크</a></button>
+      <button type="submit">로그인</button>
     </form>
 
+    <a href="/index">실험용 링크</a>
+
     <div class="login-links">
-      <a href="/signup">
-        <button onclick="/signup">회원가입</button>
-      </a>
+      <a href="/signup">회원가입</a>
       <a href="#">아이디/비번 찾기</a>
     </div>
   </div>

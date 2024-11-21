@@ -31,11 +31,17 @@ class DBhandler:
         print(data, img_path)
         return True
 
-    def insert_user(self, data, pw):
-        user_info = {"user_id": data["user_id"], "password": pw}
-        if self.user_duplicate_check(str(data["user_id"])):
-            self.db.child("user").push(user_info)
-            print(data)
+    def insert_user(self, data):
+        if self.user_duplicate_check(data["user_id"]):  # 중복 확인
+            user_info = {
+                "user_id": data["user_id"],
+                "password": data["password"],
+                "email": data["email"],
+                "phone": data["phone"],
+                "verification_code": data["verification_code"],
+            }
+            self.db.child("user").push(user_info)  # Firebase에 데이터 저장
+            print(user_info)
             return True
         else:
             return False

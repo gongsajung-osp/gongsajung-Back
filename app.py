@@ -66,14 +66,24 @@ def view_signup():
 
 @application.route("/signup_post", methods=["POST"])
 def register_user():
-    data = request.form
-    pw = request.form["password"]
-    pw_hash = hashlib.sha256(pw.encode("utf-8")).hexdigest()
+    data = request.form.to_dict()  # HTML 폼 데이터를 딕셔너리로 변환
+    data["phone"] = (
+        f"{data['phone-prefix']}-{data['phone-middle']}-{data['phone-suffix']}"  # 전화번호 병합
+    )
+    del (
+        data["phone-prefix"],
+        data["phone-middle"],
+        data["phone-suffix"],
+    )  # 병합 후 불필요한 키 삭제
+    del data["confirm_password"]  # confirm_password는 서버에 저장할 필요 없음
 
-    if DB.insert_user(data, pw_hash):
+    pw_hash = hashlib.sha256(data["password"].encode("utf-8")).hexdigest()
+    data["password"] = pw_hash  # 비밀번호를 해시로 변환
+
+    if DB.insert_user(data):  # 데이터베이스에 사용자 정보 저장
         return render_template("login.html")
     else:
-        flash("user id already exist!")
+        flash("user id already exists!")
         return render_template("signup.html")
 
 

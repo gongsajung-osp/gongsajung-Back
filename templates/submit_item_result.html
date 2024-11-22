@@ -23,7 +23,7 @@
     <strong>가격:</strong> {{ data.get('product_price') }} 원
   </p>
   <p>
-    <strong>배송 방법:</strong> {{ " ".join(data.getlist('delivery[]')) }}
+    <strong>배송 방법:</strong> {{ " ".join(data['delivery_methods']) }}
   </p>
   <p>
     <strong>연락처:</strong> {{ data.get('seller_phone') }}

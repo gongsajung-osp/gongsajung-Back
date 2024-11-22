@@ -134,16 +134,28 @@ def reg_item_submit():
 
 @application.route("/submit_item_post", methods=["POST"])
 def reg_item_submit_post():
-    image_file = request.files["file"]
-    image_file.save("static/images/{}".format(image_file.filename))
-    data = request.form
-    DB.inset_item(data["product_name"], data, image_file.filename)
+    # 상품 이미지 처리
+    image_file = request.files.get("product_image")
+    if image_file:
+        image_file.save(f"static/images/{image_file.filename}")
+        img_path = f"static/images/{image_file.filename}"
+    else:
+        img_path = None  # 이미지 업로드가 선택 사항이라면 None 처리
 
+    # 폼 데이터 복사 및 수정 가능하게 변환
+    data = request.form.to_dict()  # ImmutableMultiDict를 일반 딕셔너리로 변환
+    data["delivery_methods"] = request.form.getlist("delivery_methods[]") or ["직거래"]  # 기본값 설정
+
+    # 데이터베이스 삽입
+    DB.insert_item(data["product_name"], data, img_path)
+
+    # 결과 페이지 렌더링
     return render_template(
         "submit_item_result.html",
         data=data,
-        img_path="static/images/{}".format(image_file.filename),
+        img_path=img_path,
     )
+
 
 
 

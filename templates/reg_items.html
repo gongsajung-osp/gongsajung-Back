@@ -24,20 +24,19 @@
 </div>
 
 <div class="context">
-  <form action="/submit_item" method="post">
+  <form action="/submit_item_post" method="post" enctype="multipart/form-data">
     <!-- 상품명 -->
     <div class="category-name" class="product-label">
       <label for="product-name" class="product-label">상품명</label>
-      <input id="product-name" class="input-box" type="text" name="product_name" placeholder="상품명을 입력하세요">
+      <input id="product-name" class="input-box" type="text" name="product_name" placeholder="상품명을 입력하세요" required>
     </div>
     <br>
 
     <!-- 카테고리 -->
     <div class="product-category">
       <label for="product-category" class="product-label">카테고리</label>
-      <select id="product-category" class="product-category1" name="product_category">
+      <select id="product-category" class="product-category1" name="product_category" required>
         <option value="" style="display: none;" selected disabled>카테고리</option>
-        <option value="knit">뜨개</option>
         <option value="sticker">스티커</option>
         <option value="stationery">문구</option>
         <option value="postcard">엽서</option>
@@ -48,33 +47,33 @@
         <option value="glass">유리</option>
         <option value="beads">비즈</option>
         <option value="leather">가죽</option>
-        <option value="felt">펠트</option>
+        <option value="felt">기타</option>
       </select>
     </div><br>
 
     <!-- 이벤트명 -->
     <div class="event-tag">
       <label for="event-name" class="product-label">행사명</label>
-      <input id="event-name" class="input-box" type="text" name="event_name" placeholder="행사명을 입력하세요">
+      <input id="event-name" class="input-box" type="text" name="event_name" placeholder="행사명을 입력하세요" required>
     </div><br>
 
     <!-- 상품 이미지 -->
     <div class="product-img">
-      <label for="product-img" class="product-label">사진</label>
+      <label for="product-img" class="product-label" required>사진</label>
       <input id="product-img" type="file" name="product_image" accept="image/*">
       <div class="product-img-in"></div>
     </div><br>
 
     <!-- 상품 설명 -->
     <div class="product-explain">
-      <label for="product-explain" class="product-label">상품 설명</label>
+      <label for="product-explain" class="product-label" required>상품 설명</label>
       <textarea id="product-explain" class="input-box" name="product_explain" cols="67" rows="7"
         placeholder="상품 설명"></textarea>
     </div><br>
 
     <!-- 가격 -->
     <div class="product-price">
-      <label for="product-price" class="product-label">가격</label>
+      <label for="product-price" class="product-label" required>가격</label>
       <input id="product-price" class="input-box" type="number" name="product_price" placeholder="가격">
       <span class="won">원</span>
     </div> <br>
@@ -84,21 +83,21 @@
       <span class="product-label">배송</span>
 
       <!-- 직거래 -->
-      <input id="deli-direct" type="checkbox" class="deli-btn" name="delivery[]" value="직거래">
+      <input id="deli-direct" type="checkbox" class="deli-btn" name="delivery_methods[]" value="직거래">
       <label for="deli-direct" class="deli-type">직거래</label>
 
       <!-- 택배 -->
-      <input id="deli-delivery" type="checkbox" class="deli-btn" name="delivery[]" value="택배">
+      <input id="deli-delivery" type="checkbox" class="deli-btn" name="delivery_methods[]" value="택배">
       <label for="deli-delivery" class="deli-type">택배</label>
 
       <!-- 우편 -->
-      <input id="deli-mail" type="checkbox" class="deli-btn" name="delivery[]" value="우편">
+      <input id="deli-mail" type="checkbox" class="deli-btn" name="delivery_methods[]" value="우편">
       <label for="deli-mail" class="deli-type">우편</label>
     </div> <br>
 
     <div class="seller-phone">
-      <label for="phone" class="product-label">연락처</label>
-      <input id="phone" class="input-box" type="text" name="product_name" placeholder=" - 제외하고 숫자만 입력">
+      <label for="phone" class="product-label" required>연락처</label>
+      <input id="phone" class="input-box" type="text" name="seller_phone" placeholder=" - 제외하고 숫자만 입력">
     </div>
 
     <br>

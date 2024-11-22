@@ -5,6 +5,10 @@
   font-style: normal;
 }
 
+html {
+  overflow: hidden;
+}
+
 body {
   font-family: 'Pretendard-Regular', sans-serif;
 }

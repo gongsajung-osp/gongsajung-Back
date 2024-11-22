@@ -11,25 +11,21 @@ class DBhandler:
         self.db = firebase.database()
 
     def insert_item(self, name, data, img_path):
-        # 키 값, 속성들, 대표 사진
+    # 데이터 삽입
         item_info = {
-            "product_category": data["product_category"],
-            "event_name": data["event_name"],
-            "product_explain": data["product_explain"],
-            "product_price": data["product_price"],
-            "delivery_methods": (
-                data["delivery_methods"]
-                if isinstance(data["delivery_methods"], list)
-                else [data["delivery_methods"]]
-            ),
-            "seller_phone": data["seller_phone"],
-            "seller_nickname": data["seller_nickname"],
+            "product_category": data.get("product_category", ""),
+            "event_name": data.get("event_name", ""),
+            "product_explain": data.get("product_explain", ""),
+            "product_price": data.get("product_price", 0),
+            "delivery_methods": data.get("delivery_methods", ["직거래"]),  # 이미 리스트 형태로 처리됨
+            "seller_phone": data.get("seller_phone", ""),
+            "seller_nickname": data.get("seller_nickname", "unknown"),
             "img_path": img_path,
         }
         self.db.child("item").child(name).set(item_info)
-        # 테이블이름.키값.속성들
-        print(data, img_path)
+        print(item_info)
         return True
+
 
     def insert_user(self, data):
         if self.user_duplicate_check(data["user_id"]):  # 중복 확인

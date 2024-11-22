@@ -125,7 +125,8 @@ def reg_item_submit():
     status = request.args.get("status")
     phone = request.args.get("phone")
     print(name, seller, addr, email, category, card, status, phone)
-    # return render_template("reg_item.html")
+    
+    return render_template("reg_item.html")
 
 
 # main/sub category, price 추가로 넘겨야 함

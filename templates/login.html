@@ -21,7 +21,7 @@
     {% endwith %}
 
     <form class="login-form" action="/login_confirm" method="post">
-      <input type="text" placeholder="아이디" nsame="user_id" maxlength="50" pattern="[A-Za-z0-9]+" required>
+      <input type="text" placeholder="아이디" name="user_id" maxlength="50" pattern="[A-Za-z0-9]+" required>
       <input type="password" placeholder="패스워드" name="password" maxlength="50" pattern="[A-Za-z0-9]+" required>
       <button type="submit">로그인</button>
     </form>

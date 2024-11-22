@@ -1,7 +1,7 @@
 {% extends "index_2.html" %}
 
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/review.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/review.css') }}">
 {% endblock %}
 
 {% block ul %}
@@ -20,30 +20,32 @@
 <div class="main-content">
     <div class="about-product">
         <div class="product-image"></div>
-    
+
         <div class="product-info">
-          <h2>상품명{{ name }}</h2>
-          <div class="price">10,000원{{ price }}</div>
-          <div class="shipping">배송비: 3,000원{{ shipping_cost }}</div>
-    
-          <div class="button-group">
-            <button>직거래</button>
-            <button>택배</button>
-          </div>
-    
-          <div class="rating">
-            <span>★</span> 4.8
-          </div>
-    
-          <div class="short_description">
-            짧은 설명{{ short_description }}
-          </div>
+            <h2>상품명{{ name }}</h2>
+            <div class="price">10,000원{{ price }}</div>
+            <div class="shipping">배송비: 3,000원{{ shipping_cost }}</div>
+
+            <div class="button-group">
+                <button>직거래</button>
+                <button>택배</button>
+            </div>
+
+            <div class="rating">
+                <span>★</span> 4.8
+            </div>
+
+            <div class="short_description">
+                짧은 설명{{ short_description }}
+            </div>
+
+            <div class="purchase-btn"> 구매하기 </div>
         </div>
     </div>
-    
-    
+
+
     <div class="tabs">
-        <div class="tab" onclick="showTab('description', event)">
+        <div class="tab tab-active" onclick="showTab('description', event)">
             <span>상세 설명</span>
         </div>
         <div class="tab" onclick="showTab('reviews', event)">
@@ -75,9 +77,15 @@
 
     <div class="tab-content" id="reviews" style="display: none;">
         <div class="view-type">
-            <input type="radio" name="" value="recent">최신순
-            <input type="radio" name="" value="high-rate">별점 높은 순
-            <input type="radio" name="" value="low-rate">별점 낮은 순
+            <input type="radio" id="vt1" name="view-type" value="recent">
+            <label for="vt1"></label>
+            <label for="vt1">최신순</label>
+            <input type="radio" id="vt2" name="view-type" value="high-rate">
+            <label for="vt2"></label>
+            <label for="vt2">별점 높은 순</label>
+            <input type="radio" id="vt3" name="view-type" value="low-rate">
+            <label for="vt3"></label>
+            <label for="vt3">별점 낮은 순</label>
         </div>
         <div class="review-in">
             <div class="writer-info">
@@ -183,13 +191,6 @@
 
 <aside class="relative-product">
     <p class="aside-title">연관 상품</p>
-    <div class="relative-product-detail">
-        <div class="rp-img"></div>
-        <div class="rp-detail-right">
-            <div class="rp-name">상품명</div>
-            <div class="rp-price">10,000원</div>
-        </div>
-    </div>
     <div class="relative-product-detail">
         <div class="rp-img"></div>
         <div class="rp-detail-right">

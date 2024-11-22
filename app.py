@@ -106,6 +106,13 @@ def reg_review():
 def view_history():
     return render_template("history.html")
 
+@application.route("/profile")
+def view_profile():
+    return render_template("profile.html")
+
+@application.route("/item_manage")
+def manage_item():
+    return render_template("item_manage.html")
 
 @application.route("/submit_item")
 def reg_item_submit():
@@ -136,6 +143,7 @@ def reg_item_submit_post():
         data=data,
         img_path="static/images/{}".format(image_file.filename),
     )
+
 
 
 if __name__ == "__main__":

@@ -1,57 +1,69 @@
 {% extends "index_2.html" %}
 
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/reg_reviews.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/reg_reviews.css') }}">
 {% endblock %}
 
 {% block ul %}
 {% endblock %}
 
 {% block section %}
-            <div class="menu">
-                <div class="menu1">
-                    <a href="/reg_items">상품 등록</a>
-                </div>
-                <div class="menu2">
-                    <a href="/history">구매내역</a>
-                </div>
-                <div class="menu3">
-                    <a href="">상품 관리</a>
-                </div>
-                <div class="menu4">
-                    <a href="">내 프로필</a>
-                </div>
-            </div>
+<div class="menu">
+    <div class="menu1">
+        <a href="/reg_items">상품 등록</a>
+    </div>
+    <div class="menu2">
+        <a href="/history">구매내역</a>
+    </div>
+    <div class="menu3">
+        <a href="">상품 관리</a>
+    </div>
+    <div class="menu4">
+        <a href="">내 프로필</a>
+    </div>
+</div>
 
-            <div class="context">
-                <p class="review-write-title">리뷰 쓰기</p>
-                <div class="line"></div>
-                <div class="purchased-info">
-                    <div class="purchased-img"></div>
-                    <div class="purchased-info-in">
-                        <div class="purchased-name">상품명</div>
-                        <div class="purchased-deli">09.23 주문 - 09.25 배송완료</div>
-                        <div class="purchased-size">블랙 XL 구매</div>
-                    </div>
-                </div>
-                <div class="review-up-stars">
+<div class="context">
+    <p class="review-write-title">리뷰 쓰기</p>
+    <div class="line"></div>
+    <div class="purchased-info">
+        <div class="purchased-img"></div>
+        <div class="purchased-info-in">
+            <div class="purchased-name">상품명</div>
+            <div class="purchased-deli">09.23 주문 - 09.25 배송완료</div>
+            <div class="purchased-size">블랙 XL 구매</div>
+        </div>
+    </div>
+    <div class="star-rating space-x-4 mx-auto">
+        <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings" />
+        <label for="5-stars" class="star">★</label>
+        <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings" />
+        <label for="4-stars" class="star">★</label>
+        <input type="radio" id="3-stars" name="rating" value="3" v-model="ratings" />
+        <label for="3-stars" class="star">★</label>
+        <input type="radio" id="2-stars" name="rating" value="2" v-model="ratings" />
+        <label for="2-stars" class="star">★</label>
+        <input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
+        <label for="1-star" class="star">★</label>
+    </div>
+    <!-- <div class="review-up-stars">
                     <input type="radio" class="star" value="star1">
                     <input type="radio" class="star" value="star2">
                     <input type="radio" class="star" value="star3">
                     <input type="radio" class="star" value="star4">
                     <input type="radio" class="star" value="star5">
-                </div>
-                <form class="review-up-context" action="" method="">
-                    <textarea class="review-context" name="" cols="55" rows="7" placeholder="리뷰 작성"></textarea>
-                </form>
-                <form class="review-up-img" action="" method="">
-                    <input id="review-img" style="display: none;" type="file" accept="image/*">
-                    <label for="review-img" class="review-img">사진 등록</label>
-                </form>
-                <form class="review-upload" action="" method="">
-                    <label class="submit-btn">
-                        <input class="submit-btn-in" type="submit" value="등록"> 등록
-                    </label>
-                </form>
-            </div>
-            {% endblock section %}
+                </div> -->
+    <form class="review-up-context" action="" method="">
+        <textarea class="review-context" name="" cols="55" rows="7" placeholder="리뷰 작성"></textarea>
+    </form>
+    <form class="review-up-img" action="" method="">
+        <input id="review-img" style="display: none;" type="file" accept="image/*">
+        <label for="review-img" class="review-img">사진 등록</label>
+    </form>
+    <form class="review-upload" action="" method="">
+        <label class="submit-btn">
+            <input class="submit-btn-in" type="submit" value="등록"> 등록
+        </label>
+    </form>
+</div>
+{% endblock section %}

@@ -1,165 +1,89 @@
-(function () {
-  "use strict";
+let slides = document.querySelector(".slides");
+let slideImg = document.querySelectorAll(".slides li");
+currentIdx = 0;
+slideCount = slideImg.length;
+prev = document.querySelector(".prev");
+next = document.querySelector(".next");
+slideWidth = 850;
+slideMargin = 20;
+// slideAdd = (window.innerWidth - 890) / 2; //#slideShow width
+slideAdd = (1650 - 890) / 2;
 
-  const get = (target) => {
-    const els = document.querySelectorAll(target);
-    return els.length > 1 ? els : els[0];
-  };
+let currentSlide = document.querySelector(".current-slide");
+let allSlide = document.querySelector(".all-slide");
 
-  const $slideContainer = get(".slider__wrapper");
-  const $slider = get(".slider");
+// const slideShow = document.querySelector("#slideShow");
+// slideShow.style.width = '${window.innerWidth}px';
+// window.addEventListener("resize", () => {
+//   slideShow.style.width = '${window.innerWidth}px';
+// });
 
-  const $slideIndicator = get(".slide-count");
-  const $totalSlides = get(".all-slide");
-  const $currentSlide = get(".current-slide");
-  const $prevBtn = get(".control__button.prev");
-  const $nextBtn = get(".control__button.next");
-  const $slide = get(".slide");
+makeClone();
+initfunction();
+updateSlideCount();
 
-  const slideWidth = $slide[0].clientWidth;
-  const slideAmount = $slide.length;
-  const sliderWidth = slideWidth * slideAmount;
-  const slideSpeed = 1000;
+function makeClone() {
+  let cloneSlide_first = slideImg[0].cloneNode(true); //slideImg.firstElementChild.cloneNode(true);
+  let cloneSlide_last = slides.lastElementChild.cloneNode(true);
+  slides.append(cloneSlide_first);
+  slides.insertBefore(cloneSlide_last, slides.firstElementChild);
+}
 
-  let currentIndex = 1;
-  let moveOffset = 0;
+function initfunction() {
+  slides.style.width = (slideWidth + slideMargin) * (slideCount + 2) + 400 + "px";
+  slides.style.left = -(slideWidth + slideMargin) + slideAdd + "px";
+}
 
-  let interval;
+function updateSlideCount() {
+  currentSlide.textContent = currentIdx + 1;
+  allSlide.textContent = slideCount;
+}
 
-  const setAccessibility = () => {
-    for (let i = 0; i < $slider.children.length; i++) {
-      if (i === currentIndex) {
-        $slider.children[i].setAttribute("aria-hidden", false);
-      } else {
-        $slider.children[i].setAttribute("aria-hidden", true);
-      }
-    }
+setInterval(() => {
+  if (currentIdx <= slideCount - 1) {
+    slides.style.left = -(currentIdx + 2) * (slideWidth + slideMargin) + slideAdd + "px";
+    slides.style.transition = `${0.5}s ease-out`;
+  } if (currentIdx === slideCount - 1) {
+    setTimeout(function () {
+      slides.style.left = -(slideWidth + slideMargin) + slideAdd + "px";
+      slides.style.transition = `${0}s ease-out`;
+    }, 500);
+    currentIdx = -1;
+  }
+  currentIdx += 1;
+  updateSlideCount();
+}, 4000);
 
-    setTimeout(() => {
-      $slideIndicator.setAttribute("aria-label", `slide ${$currentSlide.textContent} of ${slideAmount}`);
-    }, 100);
+next.addEventListener('click', function () {
+  if (currentIdx <= slideCount - 1) {
+    slides.style.left = -(currentIdx + 2) * (slideWidth + slideMargin) + slideAdd + "px";
+    slides.style.transition = `${0.5}s ease-out`;
+  } if (currentIdx === slideCount - 1) {
+    setTimeout(function () {
+      slides.style.left = -(slideWidth + slideMargin) + slideAdd + "px";
+      slides.style.transition = `${0}s ease-out`;
+    }, 500);
+    currentIdx = -1;
+  }
+  currentIdx += 1;
+  updateSlideCount();
+}
+);
 
-  };
+prev.addEventListener('click', function () {
+  console.log(currentIdx);
+  if (currentIdx >= 0) {
+    slides.style.left = -(currentIdx) * (slideWidth + slideMargin) + "px";
+    slides.style.transition = `${0.5}s ease-out`;
+  } if (currentIdx === 0) {
+    setTimeout(function () {
+      slides.style.left = -(slideCount) * (slideWidth + slideMargin) + "px";
+      slides.style.transition = `${0}s ease-out`;
+    }, 500);
+    currentIdx = slideCount;
+  }
+  currentIdx -= 1;
+  updateSlideCount();
+}
+);
 
-  const slideAutoPlay = () => {
-    interval = setInterval(() => {
-      handleSwipe(1);
-
-      if (currentIndex === $slider.children.length - 1) {
-        setTimeout(() => {
-          $slider.style.transition = "none";
-          currentIndex = 1;
-          moveOffset = (100 / slideAmount) * currentIndex;
-          $slider.style.transform = `translateX(-${moveOffset}%)`;
-        }, slideSpeed);
-      }
-    }, 3000);
-  };
-
-  const handleSwipe = (direction) => {
-    currentIndex = currentIndex + direction;
-
-    if (currentIndex >= slideAmount + 2) {
-      currentIndex = 4;
-    } else if (currentIndex <= 0) {
-      currentIndex = 0;
-    }
-
-    moveOffset = (100 / slideAmount) * currentIndex;
-
-    if (currentIndex <= 0) {
-      $currentSlide.textContent =
-        $slider.children[$slider.children.length - 2].dataset.index;
-    } else if (currentIndex >= $slider.children.length - 1) {
-      $currentSlide.textContent = $slider.children[1].dataset.index;
-    } else {
-      $currentSlide.textContent = $slider.children[currentIndex].dataset.index;
-    }
-
-    $slider.style.transform = `translateX(-${moveOffset}%)`;
-    $slider.style.transition = `all ${slideSpeed}ms ease`;
-
-    setAccessibility();
-  };
-
-  const handleMoveBtn = (event) => {
-    event.preventDefault();
-    const $target = event.currentTarget;
-
-    if ($target.id === "nextBtn") {
-      handleSwipe(1);
-
-      if (currentIndex === $slider.children.length - 1) {
-        setTimeout(() => {
-          $slider.style.transition = "none";
-          currentIndex = 1;
-          moveOffset = (100 / slideAmount) * currentIndex;
-          $slider.style.transform = `translateX(-${moveOffset}%)`;
-        }, slideSpeed);
-      }
-    } else {
-      handleSwipe(-1);
-
-      if (currentIndex === 0) {
-        setTimeout(() => {
-          $slider.style.transition = "none";
-          currentIndex = $slider.children.length - 2;
-          moveOffset = (100 / slideAmount) * currentIndex;
-          $slider.style.transform = `translateX(-${moveOffset}%)`;
-        }, slideSpeed);
-      }
-    }
-  };
-
-  const setSlideLayout = () => {
-    const $firstSlideClone = $slider.firstElementChild.cloneNode(true);
-    const $lastSlideClone = $slider.lastElementChild.cloneNode(true);
-
-    $slider.insertBefore($lastSlideClone, $slider.firstElementChild);
-    $slider.appendChild($firstSlideClone);
-    $slider.style.width = `${sliderWidth}px`;
-    $slider.style.transform = `translateX(-${slideWidth}px)`;
-
-    setAccessibility();
-  };
-
-  const handleMouseEnter = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    clearInterval(interval);
-  };
-
-  const handleMouseLeave = (e) => {
-    slideAutoPlay();
-  };
-
-  const throttle = (fn, delay) => {
-    let lastCall = 0;
-    return function (...args) {
-      const now = new Date().getTime();
-      if (now - lastCall < delay) {
-        return;
-      }
-      lastCall = now;
-      fn(...args);
-    };
-  };
-
-  const handleMoveBtnThrottled = throttle(handleMoveBtn, 1000);
-
-  const init = () => {
-    setSlideLayout();
-    slideAutoPlay();
-
-    $totalSlides.textContent = slideAmount;
-    $currentSlide.textContent = currentIndex;
-
-    $prevBtn.addEventListener("click", handleMoveBtnThrottled);
-    $nextBtn.addEventListener("click", handleMoveBtnThrottled);
-
-    $slideContainer.addEventListener("mouseenter", handleMouseEnter);
-    $slideContainer.addEventListener("mouseleave", handleMouseLeave);
-  };
-
-  window.addEventListener("DOMContentLoaded", init);
-})();

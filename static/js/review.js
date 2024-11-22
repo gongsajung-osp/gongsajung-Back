@@ -1,6 +1,6 @@
 // 댓글창 보이게
 document.querySelectorAll('.react-comment').forEach((commentButton, index) => {
-  commentButton.addEventListener('click', function() {
+  commentButton.addEventListener('click', function () {
     const viewComment = document.querySelectorAll('.view-comment')[index];
 
     if (viewComment) {
@@ -14,7 +14,16 @@ document.querySelectorAll('.react-comment').forEach((commentButton, index) => {
 });
 
 
-//tab 클릭
+//tab 전환
+const tabs = document.querySelectorAll('.tab');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', function () {
+    tabs.forEach(t => t.classList.remove('tab-active'));
+    this.classList.add('tab-active');
+  })
+});
+
 function showTab(tabId, event) {
   const contents = document.querySelectorAll('.tab-content')
   contents.forEach(content => {
@@ -37,21 +46,21 @@ function showTab(tabId, event) {
 }
 
 
-//tab 고정 시 효과 --> 왜안되지... 일단 borderraidus 없애뒀음
-// const tabs = document.querySelectorAll('.tap');
+//연관상품
+const relativeProduct = document.querySelector('.relative-product');
 
+function updateRightValue() {
+  const windowWidth = window.innerWidth;
 
-// tabs.forEach((tab, index) => {
-//   const stickyPoint = tab.getBoundingClientRect();
+  if (windowWidth > 1024) {
+    relativeProduct.style.right = '210px';
+  } else if (windowWidth > 768) {
+    relativeProduct.style.right = '50px';
+  } else {
+    relativeProduct.style.right = '50px';
+  }
+}
 
-//   tab.addEventListener('scroll', function() {
+updateRightValue();
 
-//     const stickyPosition = 13 * 16;
-  
-//     if (stickyPoint.top <= stickyPosition) {
-//         tab.style.borderRadius = '0 0 150px 150px';
-//     } else {
-//         tab.style.borderRadius = '0px';
-//     }
-//   });
-// });
+window.addEventListener('resize', updateRightValue);

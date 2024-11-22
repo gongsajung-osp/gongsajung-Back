@@ -1,8 +1,8 @@
 @font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
 }
 
 input {
@@ -13,20 +13,20 @@ input {
 }
 
 body {
-  font-family: 'Pretendard-Regular', sans-serif;
+    font-family: 'Pretendard-Regular', sans-serif;
 }
 
 .nav {
-  display: flex;
-  list-style-type: none;
+    display: flex;
+    list-style-type: none;
 }
 
 .footer {
-  padding: 20px;
-  background-color: #ffffff;
-  color: #333;
-  text-align: center;
-} 
+    padding: 20px;
+    background-color: #ffffff;
+    color: #333;
+    text-align: center;
+}
 
 
 /* 여기부턴 추가한 부분 ~ */
@@ -41,7 +41,7 @@ header {
     align-items: center;
     /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
     /* padding: 10px 0; */
-    
+
 }
 
 .header-top {

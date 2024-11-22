@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
     var DeliStatus = document.getElementsByClassName('deli-status');
     var ReviewBtn = document.getElementsByClassName('review-write-btn');
 

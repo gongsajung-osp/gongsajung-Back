@@ -11,6 +11,9 @@
   {% block product %}
   <section>
     <!-- js를 통해 동적으로 추가 예정 -->
+
+
+
     <div class="product-card">
       <a href="/review">
         <div class="product-image"></div>
@@ -83,11 +86,12 @@
         </div>
       </a>
     </div>
-    
+
   </section>
 </div>
 
 </section>
 {% endblock %}
 </div>
+<script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
 {% endblock %}

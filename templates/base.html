@@ -14,7 +14,8 @@
     <div class="container">
       <div class="left">
         <span class="setting">
-          <img src="static/images/search-icon.png" alt="setting icon" onclick="settingToggleDropdown(event)">
+          <img id="bubble" src="static/images/bubble.png" alt="thinking bubble" onclick="settingToggleDropdown(event)">
+          <img id="tiger" src="static/images/tiger.png" alt="setting icon" onclick="settingToggleDropdown(event)">
           <ul class="dropdown-setting">
             {% if session['user_id'] %}
             <li><b>{{session['user_id']}}님 반갑습니다!</b><br><br><br><a href="/logout"> 로그아웃</a></li><br>
@@ -22,9 +23,9 @@
             <li><a href="/login">로그인</a></li><br>
             {% endif %}
             <li><a href="/reg_items">상품 등록</a></li><br>
-            <li><a href="">구매 내역</a></li><br>
-            <li><a href="">리뷰 관리</a></li><br>
-            <li><a href="">포인트 조회</a></li>
+            <li><a href="/item_manage">상품 관리</a></li><br>
+            <li><a href="/history">구매 내역</a></li><br>
+            <li><a href="/profile">내 프로필</a></li>
           </ul>
         </span>
       </div>
@@ -32,7 +33,7 @@
       <div class="main">
         <div class="search-container">
           <span class="logo">
-            <a href="/index">
+            <a href="/landing">
               <img src="static/images/logo.png" alt="logo">
             </a>
           </span>
@@ -47,7 +48,7 @@
         <nav>
           <ul style="list-style: none;">
             <li class="">
-              <a href="/index">뜨개</a>
+              <a href="/index">전체</a>
             </li>
             <li class>
               <a href="/index">스티커</a>
@@ -80,7 +81,7 @@
               <a href="/index">가죽</a>
             </li>
             <li class>
-              <a href="/index">펠트</a>
+              <a href="/index">기타</a>
             </li>
           </ul>
         </nav>

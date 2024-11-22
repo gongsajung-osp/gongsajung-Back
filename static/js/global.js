@@ -9,15 +9,15 @@ function settingToggleDropdown(event) {
       item.style.visibility = 'hidden';
     });
   } else {
-      dropdownItems.reverse().forEach((item, index) => {
+    dropdownItems.reverse().forEach((item, index) => {
       setTimeout(() => {
         item.style.visibility = 'visible';
-      }, index * 20); 
+      }, index * 20);
     });
   }
 }
 
-window.addEventListener('click', function(e) {
+window.addEventListener('click', function (e) {
   const dropdownMenu = document.querySelector('.dropdown-menu');
   if (!e.target.closest('.setting')) {
     const dropdownItems = dropdownMenu.querySelectorAll('li');
@@ -98,3 +98,13 @@ document.addEventListener('click', () => {
   });
 });
 
+function settingToggleDropdown(event) {
+  const bubble = document.getElementById('bubble');
+
+  // `display` 속성이 'none'인지 확인하고 토글
+  if (bubble.style.display === 'none' || bubble.style.display === '') {
+    bubble.style.display = 'block'; // 보이기
+  } else {
+    bubble.style.display = 'none'; // 숨기기
+  }
+}

@@ -1,82 +1,70 @@
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
+#slideShow * {
+  margin: 0;
   padding: 0;
-  margin: -1px;
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  overflow: hidden;
+  box-sizing: border-box;
 }
 
-.slider__wrapper {
-  position: relative;
-  width: 1350px;
+#slideShow li {
+  list-style-type: none;
+}
+
+#slideShow img {
+  width: 850px;
   height: 380px;
-  margin: 30px auto;
-  overflow: hidden;
+  border-radius: 30px;
 }
 
-.slider {
+#slideShow {
+  /* width: 100vw; */
+  width: 1650px;
+  height: 380px;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-}
-
-.slide {
-  width: 45%;
-  height: 100%;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  background-color: transparent;
+  margin: 50px auto 10px auto !important;
   overflow: hidden;
-  margin: 0 auto;
-  padding: 0 10px;
-  object-fit: contain;
 }
 
-.slider-control {
+.slides {
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  left: 0;
+  top: 0;
+  width: 2500px;
+  transition: 0.5s ease-out;
+}
+
+.slides li:first-child {
+  margin-left: 20px !important;
+}
+
+.slides li:not(:last-child) {
+  float: left;
+  margin-right: 20px !important;
+}
+
+.slides li {
+  float: left;
+}
+
+.controller {
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
+  justify-content: center;
   align-items: center;
-  bottom: 20px;
-  left: 45%;
-  background-color: transparent;
 }
 
-.slider-control .control__button {
-  border: none;
-  width: 40px;
-  height: 40px;
-  color: #a6a0a0;
+.controller span {
+  background-color: transparent;
+  color: #8e8e8e;
+  text-align: center;
+  padding: 7px;
   cursor: pointer;
-  background-color: transparent;
-  font-size: 20px;
-}
-
-.slider-control .slide-count {
-  color: #a6a0a0;
-  margin: 0 auto;
-}
-
-.slide img {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-}
-
-.setting {
-  display: none;
+  border-radius: 50%;
+  font-size: 0.8rem;
 }
 
 .mid {
-  padding: 0 5%;
+  /* padding: 0 5% !important; */
+  width: 50%;
+  height: 380px;
+  margin: 0 auto;
 }
 
 .info {
@@ -84,12 +72,12 @@
   border-radius: 10px;
   border: 1px solid #333;
   height: 200px;
-  padding: 30px;
+  padding: 30px !important;
 }
 
 footer {
-  height: 500px;
-  background-color: rgb(196, 196, 196);
-  padding: 50px;
-  margin-top: 50px;
+  height: 200px;
+  background-color: rgb(243, 243, 243);
+  padding: 50px !important;
+  margin-top: 50px !important;
 }

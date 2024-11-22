@@ -14,8 +14,9 @@
     <div class="container">
       <div class="left">
         <span class="setting">
-          <img id="bubble" src="static/images/bubble.png" alt="thinking bubble" onclick="settingToggleDropdown(event)">
+          <img id="bubble" src="static/images/bubble.png" alt="thinking bubble">
           <img id="tiger" src="static/images/tiger.png" alt="setting icon" onclick="settingToggleDropdown(event)">
+
           <ul class="dropdown-setting">
             {% if session['user_id'] %}
             <li><b>{{session['user_id']}}님 반갑습니다!</b><br><br><br><a href="/logout"> 로그아웃</a></li><br>

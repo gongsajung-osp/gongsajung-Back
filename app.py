@@ -137,6 +137,8 @@ def review(product_name):
         # 상품이 없으면 오류 처리
         flash(f"상품 '{product_name}'을(를) 찾을 수 없습니다.")
         return redirect(url_for("view_index"))
+    
+    reviews = DB.get_item_byname(product_name)
 
     # review.html에 상품 데이터 전달
     return render_template(
@@ -165,8 +167,18 @@ def reg_review():
 
 @application.route("/history")
 def view_history():
+    # 로그인 여부 확인
+    user_id = session.get("user_id")
+    
+    if not user_id:
+        flash("로그인이 필요합니다.")  # 로그인 요구 메시지
+        return redirect(url_for("view_login"))  # 로그인 페이지로 리디렉션
+    
+    # 로그인된 경우 Firebase에서 상품 데이터 가져오기
     items = DB.get_items()
-    return render_template("history.html",items=items)
+    
+    return render_template("history.html", items=items)
+
 
 @application.route("/profile")
 def view_profile():
@@ -245,29 +257,49 @@ def submit_review():
     review_data = {
         "user_id": session.get("user_id"),
         "item_name": item_name,
-        "rating": int(rating),
+        "rating": rating,
         "review_text": review_text,
         "review_image": image_path,
     }
-    DB.db.child("reviews").push(review_data)
 
-    # 주문 상태 업데이트
-    DB.db.child("orders").child(order_id).update({"is_reviewed": True})
+    DB.insert_review(item_name, review_data)
 
     flash("리뷰가 성공적으로 등록되었습니다!")
-    return redirect(url_for("view_history"))
+    return redirect(url_for("review",product_name=item_name))
 
 
-@application.route("/write_review/<order_id>")
-def write_review(order_id):
-    # 주문 정보 가져오기
-    order_data = DB.db.child("orders").child(order_id).get().val()
+@application.route("/write_review/<item_name>")
+def write_review(item_name):
+    db_handler = DBhandler()  # Firebase DB 핸들러 인스턴스 생성
+    item_data = db_handler.get_item_byname(item_name)
 
-    if not order_data:
-        flash("주문 정보를 찾을 수 없습니다.")
+    if not item_data:
+        # 상품이 없을 경우
+        flash("상품을 찾을 수 없습니다.")
         return redirect(url_for("view_history"))
 
+    # `order` 객체 생성 (템플릿에서 사용하는 데이터)
+    order_data = {
+        "item_name": item_name,
+        "item_image": item_data.get("img_path", "images/default.jpg"),  # 이미지 경로
+        "order_date": "2024-11-24",  # 테스트용 데이터
+        "delivery_date": "2024-11-26",  # 테스트용 데이터
+        "item_options": "기본 옵션",  # 예시 데이터
+        "order_id": "12345"  # 테스트 데이터
+    }
+
+    # `reg_reviews.html` 렌더링
     return render_template("reg_reviews.html", order=order_data)
+
+
+
+def get_item_byname(self, name):
+    items = self.db.child("item").get()  # Firebase `item` 노드 가져오기
+    for res in items.each():
+        if res.key() == name:  # 상품 이름과 키 비교
+            return res.val()
+    return None  # 데이터가 없을 경우 None 반환
+
 
 
 @application.route("/buy_item", methods=["POST"])

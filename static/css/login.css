@@ -3,9 +3,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
   width: 100vw;
   height: 100vh;
-  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 .container {
@@ -13,27 +14,23 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
-  /* 중간 칸을 채우기 위해 조정 */
+  width: 90%;
   max-width: 400px;
-  /* 로그인 폼의 너비 제한 */
-  position: fixed;
-  top: 400px;
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .banner-logo {
-  position: inherit;
-  bottom: 450px;
-  width: 500px;
+  width: 200px;
+  margin-bottom: 20px;
 }
 
 .mascot-icon {
-  width: 200px;
-  margin: 0 auto 10px;
-  display: block;
-  z-index: 100;
-  position: inherit;
-  bottom: 275px;
+  width: 100px;
+  margin-bottom: 20px;
 }
 
 .login-form {
@@ -44,40 +41,49 @@ body {
 }
 
 .login-form input[type="text"],
-.login-form input[type="password"],
-.login-form button {
+.login-form input[type="password"] {
   width: 100%;
-  max-width: 250px;
+  max-width: 300px;
   padding: 10px;
-  margin: 3px 0;
+  margin: 5px 0;
   font-size: 16px;
-  border: 4px solid black;
+  border: 1px solid #ccc;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .login-form button {
-  background-color: #333;
-  color: #fff;
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  font-size: 16px;
   font-weight: bold;
+  color: white;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .login-form button:hover {
-  cursor: pointer;
-  background-color: #000000;
-  color: white;
+  background-color: #000;
 }
 
 .login-links {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 250px;
+  max-width: 300px;
   font-size: 14px;
-  color: black;
-  margin-top: 10px;
+  margin-top: 20px;
+}
+
+.login-links a {
+  text-decoration: none;
+  color: #333;
 }
 
 .login-links a:hover {
   text-decoration: underline;
-  cursor: pointer;
 }

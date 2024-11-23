@@ -11,29 +11,35 @@
 
 <body>
   <div class="container">
-    <img src="static/images/logo.png" class="banner-logo">
-    <img src="static/images/tiger.png" class="mascot-icon">
+    <!-- 로고 이미지 -->
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="로고" class="banner-logo">
 
+    <!-- 호랑이 마스코트 -->
+    <img src="{{ url_for('static', filename='images/tiger.png') }}" alt="호랑이" class="mascot-icon">
+
+    <!-- 알림 메시지 -->
     {% with mesg = get_flashed_messages() %}
-    {% if mesg !=[] %}
+    {% if mesg != [] %}
     <script>alert("{{ mesg[0] }}")</script>
     {% endif %}
     {% endwith %}
 
+    <!-- 로그인 폼 -->
     <form class="login-form" action="/login_confirm" method="post">
       <input type="text" placeholder="아이디" name="user_id" maxlength="50" pattern="[A-Za-z0-9]+" required>
       <input type="password" placeholder="패스워드" name="password" maxlength="50" pattern="[A-Za-z0-9]+" required>
       <button type="submit">로그인</button>
     </form>
 
+    <!-- 테스트 링크 -->
     <a href="/index">실험용 링크</a>
 
+    <!-- 하단 링크 -->
     <div class="login-links">
       <a href="/signup">회원가입</a>
       <a href="#">아이디/비번 찾기</a>
     </div>
   </div>
 </body>
-
 
 </html>

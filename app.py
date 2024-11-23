@@ -93,6 +93,66 @@ def view_review():
     return render_template("review.html",reviews=reviews)
 
 
+
+
+
+# @application.route("/review/<product_name>")
+# def view_product_review(product_name):
+#     # 상품 이름으로 데이터베이스에서 상품 정보 가져오기
+#     product_details = DB.get_item_byname(product_name)
+    
+#     if not product_details:
+#         # 상품이 존재하지 않을 경우
+#         flash("상품을 찾을 수 없습니다.")
+#         return redirect(url_for("view_index"))
+    
+#     # review.html 렌더링
+#     return render_template("review.html", product_name=product_name, product_details=product_details)
+
+# @application.route("/review/<product_name>")
+# def review(product_name):
+#     # 데이터베이스에서 상품 정보 가져오기 (가정: `DB.get_item_byname` 사용)
+#     product_details = DB.get_item_byname(product_name)
+    
+#     if not product_details:
+#         # 상품이 없으면 오류 처리
+#         flash(f"상품 '{product_name}'을(를) 찾을 수 없습니다.")
+#         return redirect(url_for("index"))
+
+#     # review.html에 상품 데이터 전달
+#     return render_template("review.html", 
+#                            name=product_name, 
+#                            price=product_details['product_price'], 
+#                            shipping_cost=product_details.get('shipping_cost', '무료'),
+#                            short_description=product_details.get('short_description', '상세 설명이 없습니다.'),
+#                            main_category=product_details.get('main_category', '카테고리 없음'))
+
+
+@application.route("/review/<product_name>")
+def review(product_name):
+    # 데이터베이스에서 상품 정보 가져오기
+    product_details = DB.get_item_byname(product_name)
+    
+    if not product_details:
+        # 상품이 없으면 오류 처리
+        flash(f"상품 '{product_name}'을(를) 찾을 수 없습니다.")
+        return redirect(url_for("view_index"))
+
+    # review.html에 상품 데이터 전달
+    return render_template(
+        "review.html",
+        name=product_name,
+        price=product_details.get("product_price", "가격 미정"),
+        img_path=product_details.get("img_path", "images/default.jpg"),
+        product_explain=product_details.get("product_explain", "상세 설명이 없습니다."),
+        shipping_cost=product_details.get("shipping_cost", "무료"),
+        product_category=product_details.get("product_category", "카테고리 없음"),
+        event_name=product_details.get("event_name", "행사 미정"),
+    )
+
+
+
+
 @application.route("/reg_items")
 def reg_item():
     return render_template("reg_items.html")

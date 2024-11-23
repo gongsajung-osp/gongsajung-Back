@@ -15,11 +15,20 @@
     {% if items %}
       {% for product_name, product_details in items.items() %}
       <div class="product-card">
-        <a href="/review?product_name={{ product_name }}">
+
+
+
+        <a href="/review/{{ product_name }}">
+        <!-- <a href="/product_name={{ product_name }}"> -->
+        
+
+
           <!-- 상품 이미지 -->
           <div class="product-image">
             {% if product_details.get('img_path') %}
-              <img src="{{ url_for('static', filename=product_details['img_path']) }}" alt="{{ product_name }}">
+              
+            <img src="{{ url_for('static', filename=product_details['img_path']) }}" alt="{{ product_name }}">
+            
             {% else %}
               <img src="{{ url_for('static', filename='images/default.jpg') }}" alt="기본 이미지">
             {% endif %}

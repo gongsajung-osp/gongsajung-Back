@@ -6,7 +6,7 @@
 
 {% block ul %}
 <div class="breadcrumb">
-    메인 카테고리{{ main_category }} <span class="breadcrumb-tag">#</span> 행사명
+    #{{ product_category }} <span class="breadcrumb-tag">#{{event_name}}</span>
 </div>
 <div class="touched"></div>
 {% endblock %}
@@ -19,12 +19,19 @@
 
 <div class="main-content">
     <div class="about-product">
-        <div class="product-image"></div>
+        <!-- <div class="product-image"></div> -->
+        
+        
+        <div class="product-image">
+    <img src="{{ url_for('static', filename=img_path) }}" alt="{{ name }}">
+</div>
+
+
 
         <div class="product-info">
-            <h2>상품명{{ name }}</h2>
-            <div class="price">10,000원{{ price }}</div>
-            <div class="shipping">배송비: 3,000원{{ shipping_cost }}</div>
+            <h2>{{ name }}</h2>
+            <div class="price">{{ price }}원</div>
+            <div class="shipping">배송비: {{ shipping_cost }}</div>
 
             <div class="button-group">
                 <button>직거래</button>
@@ -35,9 +42,9 @@
                 <span>★</span> 4.8
             </div>
 
-            <div class="short_description">
+            <!-- <div class="short_description">
                 짧은 설명{{ short_description }}
-            </div>
+            </div> -->
 
             <!-- <div class="purchase-btn"> 
                 <form action="/buy_item" method="POST">
@@ -78,24 +85,11 @@
         </div>
     </div>
 
+    <!-- 상세 설명 탭 -->
     <div class="tab-content" id="description">
-        <!-- default tab : 상세 설명-->
-        <pre>
-    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-
-    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-        </pre>
+        <pre>{{ product_explain }}</pre>
     </div>
+
 
     <div class="tab-content" id="reviews" style="display: none;">
         <div class="view-type">

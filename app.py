@@ -89,7 +89,8 @@ def register_user():
 
 @application.route("/review")
 def view_review():
-    return render_template("review.html")
+    reviews = DB.db.child("review").get().val()
+    return render_template("review.html",reviews=reviews)
 
 
 @application.route("/reg_items")
@@ -161,3 +162,48 @@ def reg_item_submit_post():
 
 if __name__ == "__main__":
     application.run(host="0.0.0.0", debug=True)
+
+
+@application.route("/submit_review", methods=["POST"])
+def submit_review():
+    # 폼 데이터 가져오기
+    order_id = request.form.get("order_id")
+    item_name = request.form.get("item_name")
+    rating = request.form.get("rating")
+    review_text = request.form.get("review_text")
+    review_image = request.files.get("review_image")
+
+    if review_image:
+        from werkzeug.utils import secure_filename
+        image_filename = secure_filename(review_image.filename)
+        image_path = f"static/images/reviews/{image_filename}"
+        review_image.save(image_path)
+    else:
+        image_path = None
+
+    review_data = {
+        "user_id": session.get("user_id"),
+        "item_name": item_name,
+        "rating": int(rating),
+        "review_text": review_text,
+        "review_image": image_path,
+    }
+    DB.db.child("reviews").push(review_data)
+
+    # 주문 상태 업데이트
+    DB.db.child("orders").child(order_id).update({"is_reviewed": True})
+
+    flash("리뷰가 성공적으로 등록되었습니다!")
+    return redirect(url_for("view_history"))
+
+
+@application.route("/write_review/<order_id>")
+def write_review(order_id):
+    # 주문 정보 가져오기
+    order_data = DB.db.child("orders").child(order_id).get().val()
+
+    if not order_data:
+        flash("주문 정보를 찾을 수 없습니다.")
+        return redirect(url_for("view_history"))
+
+    return render_template("reg_reviews.html", order=order_data)

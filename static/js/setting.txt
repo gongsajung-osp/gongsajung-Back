@@ -1,0 +1,2 @@
+<script src="{{ url_for('static', filename='js/global.js') }}" defer></script>
+-> html에 있으니 별도로 연결할 필요없음

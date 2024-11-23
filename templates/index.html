@@ -12,86 +12,32 @@
   <section>
     <!-- js를 통해 동적으로 추가 예정 -->
 
-
-
-    <div class="product-card">
-      <a href="/review">
-        <div class="product-image"></div>
-        <div class="product-info">
-          <span class="product-name">상품명{{ name }}</span>
-          <span class="product-price">10,000원{{ price }}</span>
-        </div>
-      </a>
-    </div>
-    <div class="product-card">
-      <a href="/review">
-        <div class="product-image"></div>
-        <div class="product-info">
-          <span class="product-name">상품명{{ name }}</span>
-          <span class="product-price">10,000원{{ price }}</span>
-        </div>
-      </a>
-    </div>
-    <div class="product-card">
-      <a href="/review">
-        <div class="product-image"></div>
-        <div class="product-info">
-          <span class="product-name">상품명{{ name }}</span>
-          <span class="product-price">10,000원{{ price }}</span>
-        </div>
-      </a>
-    </div>
-    <div class="product-card">
-      <a href="/review">
-        <div class="product-image"></div>
-        <div class="product-info">
-          <span class="product-name">상품명{{ name }}</span>
-          <span class="product-price">10,000원{{ price }}</span>
-        </div>
-      </a>
-    </div>
-    <div class="product-card">
-      <a href="/review">
-        <div class="product-image"></div>
-        <div class="product-info">
-          <span class="product-name">상품명{{ name }}</span>
-          <span class="product-price">10,000원{{ price }}</span>
-        </div>
-      </a>
-    </div>
-    <div class="product-card">
-      <a href="/review">
-        <div class="product-image"></div>
-        <div class="product-info">
-          <span class="product-name">상품명{{ name }}</span>
-          <span class="product-price">10,000원{{ price }}</span>
-        </div>
-      </a>
-    </div>
-    <div class="product-card">
-      <a href="/review">
-        <div class="product-image"></div>
-        <div class="product-info">
-          <span class="product-name">상품명{{ name }}</span>
-          <span class="product-price">10,000원{{ price }}</span>
-        </div>
-      </a>
-    </div>
-    <div class="product-card">
-      <a href="/review">
-        <div class="product-image"></div>
-        <div class="product-info">
-          <span class="product-name">상품명{{ name }}</span>
-          <span class="product-price">10,000원{{ price }}</span>
-        </div>
-      </a>
-    </div>
-
+    {% if items %}
+      {% for item in items %}
+      <div class="product-card">
+        <a href="/review?product_name={{ item['product_name'] if 'product_name' in item else '상품명 미제공' }}">
+          <!-- 상품 이미지 -->
+          <div class="product-image">
+            {% if item is mapping and item.get('product_image') %}
+              <img src="{{ url_for('static', filename=item['product_image']) }}" alt="{{ item['product_name'] }}">
+            {% else %}
+              <img src="{{ url_for('static', filename='images/default.jpg') }}" alt="기본 이미지">
+            {% endif %}
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">{{ item['product_name'] if item is mapping else '상품명 미제공' }}</span>
+            <span class="product-price">{{ item['product_price'] if item is mapping else 0 }}원</span>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p>등록된 상품이 없습니다.</p>
+    {% endif %}
   </section>
-</div>
-
-</section>
-{% endblock %}
+  {% endblock %}
 </div>
 <script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
 {% endblock %}
+

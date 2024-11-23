@@ -569,3 +569,8 @@ textarea {
         width: 40%;
     }
 } */
+
+#purchase-popup1, #purchase-popup2 {
+    z-index: 100;
+    text-align: center;
+}

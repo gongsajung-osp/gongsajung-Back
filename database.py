@@ -9,6 +9,7 @@ class DBhandler:
 
         firebase = pyrebase.initialize_app(config)
         self.db = firebase.database()
+        self.storage = firebase.storage()
 
     def insert_item(self, name, data, img_path):
     # 데이터 삽입
@@ -68,9 +69,13 @@ class DBhandler:
         return False
 
     def get_items(self):
-        items = self.db.child("item").get().val()
-        return items
+        items = self.db.child("item").get()  # Firebase에서 아이템 가져오기
+        if items.val() is None:
+            return []  # 빈 리스트 반환
+        else:
+            return items.val()  # Firebase에서 가져온 데이터를 그대로 반환
 
+    
     def get_item_byname(self, name):
         items = self.db.child("item").get()
         target_value = ""

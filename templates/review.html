@@ -39,8 +39,30 @@
                 짧은 설명{{ short_description }}
             </div>
 
-            <div class="purchase-btn"> 구매하기 </div>
+            <!-- <div class="purchase-btn"> 
+                <form action="/buy_item" method="POST">
+                    <input type="hidden" name="prodect_id" value="{{product_id}}">
+                    <button type="submit">구매하기</button>
+                </form>
+            </div> -->
+
+            <div class="purchase-btn" id="purchase-btn">
+                구매하기
+            </div>
         </div>
+    </div>
+
+    <div id="purchase-popup1" style="display: none;">
+        <p>구매하시겠습니까?</p>
+        <button id="confirm-purchase">구매</button>
+        <button id="cancel-purchase">취소</button>
+        <p></p>
+    </div>
+
+    <div id="purchase-popup2" style="display: none;">
+        <p>구매가 확정되었습니다!</p>
+        <button id="move-btn"><a href="/history">구매내역 확인하기</a></button>
+        <p></p>
     </div>
 
 

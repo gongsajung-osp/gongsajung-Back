@@ -11,8 +11,7 @@ DB = DBhandler()
 
 @application.route("/")
 def start():
-    return render_template("reg_items.html")
-
+    return render_template('landing.html')
 
 @application.route("/landing")
 def view_landing():
@@ -26,8 +25,9 @@ def view_base():
 
 @application.route("/index")
 def view_index():
-    return render_template("index.html")
-
+    items = DB.get_items() # DB 에서 모든 상품 조회
+    return render_template("index.html",items=items)
+    
 
 @application.route("/login")
 def view_login():
@@ -105,7 +105,8 @@ def reg_review():
 
 @application.route("/history")
 def view_history():
-    return render_template("history.html")
+    items = DB.get_items()
+    return render_template("history.html",items=items)
 
 @application.route("/profile")
 def view_profile():
@@ -139,7 +140,7 @@ def reg_item_submit_post():
     image_file = request.files.get("product_image")
     if image_file:
         image_file.save(f"static/images/{image_file.filename}")
-        img_path = f"static/images/{image_file.filename}"
+        img_path = f"images/{image_file.filename}"
     else:
         img_path = None  # 이미지 업로드가 선택 사항이라면 None 처리
 
@@ -207,3 +208,33 @@ def write_review(order_id):
         return redirect(url_for("view_history"))
 
     return render_template("reg_reviews.html", order=order_data)
+
+
+@application.route("/buy_item", methods=["POST"])
+def buy_item():
+    #클라이언트로부터 전달받은 상품 ID 
+    product_id = request.form.get("product_id")
+    user_id = session.get("user_id") #현재 로그인된 사용자
+
+    if not user_id:
+        flash("로그인이 필요합니다.")
+        return redirect(url_for("view_login"))
+    
+    purchase_data={
+        "user_id": user_id,
+        "product_id": product_id,
+        "purchase_data": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "delivery_status":"배송 중",
+    }
+
+    try:
+        DB.child("purchases").push(purchase_data)
+
+        flash("구매가 완료되었습니다.")
+        return redirect(url_for("view_history"))
+
+    except Exception as e:
+        # 에러 처리
+        flash(f"구매 처리 중 문제가 발생했습니다: {str(e)}")
+        return redirect(url_for("view_product", product_id=product_id))
+

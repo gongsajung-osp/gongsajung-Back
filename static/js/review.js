@@ -64,3 +64,22 @@ function updateRightValue() {
 updateRightValue();
 
 window.addEventListener('resize', updateRightValue);
+
+
+//구매 팝업
+document.getElementById("purchase-btn").onclick = function() {
+  document.getElementById("purchase-popup1").style.display = "block";
+};
+
+document.getElementById("confirm-purchase").onclick = function() {
+  document.getElementById("purchase-popup1").style.display = "none";
+  document.getElementById("purchase-popup2").style.display = "block";
+  setTimeout(function() {
+    document.getElementById("purchase-popup2").style.display = "none";
+  }, 2000);
+  confirmPurchase();
+}
+
+document.getElementById("cancel-purchase").onclick = function() {
+  document.getElementById("purchase-popup1").style.display = "none";
+}

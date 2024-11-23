@@ -13,21 +13,21 @@
     <!-- js를 통해 동적으로 추가 예정 -->
 
     {% if items %}
-      {% for item in items %}
+      {% for product_name, product_details in items.items() %}
       <div class="product-card">
-        <a href="/review?product_name={{ item['product_name'] if 'product_name' in item else '상품명 미제공' }}">
+        <a href="/review?product_name={{ product_name }}">
           <!-- 상품 이미지 -->
           <div class="product-image">
-            {% if item is mapping and item.get('product_image') %}
-              <img src="{{ url_for('static', filename=item['product_image']) }}" alt="{{ item['product_name'] }}">
+            {% if product_details.get('img_path') %}
+              <img src="{{ url_for('static', filename=product_details['img_path']) }}" alt="{{ product_name }}">
             {% else %}
               <img src="{{ url_for('static', filename='images/default.jpg') }}" alt="기본 이미지">
             {% endif %}
           </div>
           <!-- 상품 정보 -->
           <div class="product-info">
-            <span class="product-name">{{ item['product_name'] if item is mapping else '상품명 미제공' }}</span>
-            <span class="product-price">{{ item['product_price'] if item is mapping else 0 }}원</span>
+            <span class="product-name">{{ product_name }}</span>
+            <span class="product-price">{{ product_details['product_price'] if 'product_price' in product_details else 0 }}원</span>
           </div>
         </a>
       </div>

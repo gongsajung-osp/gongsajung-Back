@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Tiger Market{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+  {% block product %}
+  <section>
+    <!-- js를 통해 동적으로 추가 예정 -->
+
+    <div class="product-card">
+      <a href="/review">
+        <div class="product-image"></div>
+        <div class="product-info">
+          <span class="product-name">상품명{{ product_name }}</span>
+          <span class="product-price">10,000원{{ product_price }}</span>
+        </div>
+      </a>
+    </div>
+
+  </section>
+</div>
+
+</section>
+{% endblock %}
+</div>
+<script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+{% endblock %}

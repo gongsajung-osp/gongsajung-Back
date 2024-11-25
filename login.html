@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global1.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <img src="static/images/logo.png" class="banner-logo">
+    <img src="static/images/tiger.png" class="mascot-icon">
+
+    {% with mesg = get_flashed_messages() %}
+    {% if mesg !=[] %}
+    <script>alert("{{ mesg[0] }}")</script>
+    {% endif %}
+    {% endwith %}
+
+    <form class="login-form" action="/login_confirm" method="post">
+      <input type="text" placeholder="아이디" name="user_id" maxlength="50" pattern="[A-Za-z0-9]+" required>
+      <input type="password" placeholder="패스워드" name="password" maxlength="50" pattern="[A-Za-z0-9]+" required>
+      <button type="submit">로그인</button>
+    </form>
+
+    <a href="/index">실험용 링크</a>
+
+    <div class="login-links">
+      <a href="/signup">회원가입</a>
+      <a href="#">아이디/비번 찾기</a>
+    </div>
+  </div>
+</body>
+
+
+</html>

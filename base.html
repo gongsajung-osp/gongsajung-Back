@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Tiger Market{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  {% block head %}{% endblock %}
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="left">
+        <span class="setting">
+          <img id="bubble" src="static/images/bubble.png" alt="thinking bubble">
+          <img id="tiger" src="static/images/tiger.png" alt="setting icon" onclick="settingToggleDropdown(event)">
+
+          <ul class="dropdown-setting">
+            {% if session['user_id'] %}
+            <li><b>{{session['user_id']}}님 반갑습니다!</b><br><br><br><a href="/logout"> 로그아웃</a></li><br>
+            {% else %}
+            <li><a href="/login">로그인</a></li><br>
+            {% endif %}
+            <li><a href="/reg_items">상품 등록</a></li><br>
+            <li><a href="/item_manage">상품 관리</a></li><br>
+            <li><a href="/history">구매 내역</a></li><br>
+            <li><a href="/profile">내 프로필</a></li>
+          </ul>
+        </span>
+      </div>
+
+      <div class="main">
+        <div class="search-container">
+          <span class="logo">
+            <a href="/landing">
+              <img src="static/images/logo.png" alt="logo">
+            </a>
+          </span>
+          <form class="search-box" action="/search" method="GET">
+            <input type="text" placeholder="검색..." name="query">
+            <button class="search-btn" type="submit">
+              <img src="static/images/search-icon.png" alt="search-icon">
+            </button>
+          </form>
+        </div>
+
+        <nav>
+          <ul style="list-style: none;">
+            <li class="">
+              <a href="/index">전체</a>
+            </li>
+            <li class>
+              <a href="/index">스티커</a>
+            </li>
+            <li class>
+              <a href="/index">문구</a>
+            </li>
+            <li class>
+              <a href="/index">엽서</a>
+            </li>
+            <li class>
+              <a href="/index">도자기</a>
+            </li>
+            <li class>
+              <a href="/index">생활용품</a>
+            </li>
+            <li class>
+              <a href="/index">먹거리</a>
+            </li>
+            <li class>
+              <a href="/index">포스터</a>
+            </li>
+            <li class>
+              <a href="/index">유리</a>
+            </li>
+            <li class>
+              <a href="/index">비즈</a>
+            </li>
+            <li class>
+              <a href="/index">가죽</a>
+            </li>
+            <li class>
+              <a href="/index">기타</a>
+            </li>
+          </ul>
+        </nav>
+
+        <main>
+          {% block content %}{% endblock %}
+        </main>
+      </div>
+
+      <div class="right">
+        <div class="related-items"></div>
+      </div>
+    </div>
+  </header>
+
+  {% block content2 %}{% endblock %}
+  <script src="{{ url_for('static', filename='js/global.js') }}"></script>
+</body>
+
+</html>

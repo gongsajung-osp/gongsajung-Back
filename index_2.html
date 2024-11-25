@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <title>main</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global2.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div class="logo">
+                    <a href="/landing">
+                        <img src="static/images/logo.png" alt="logo" class="logoimg">
+                    </a>
+                </div>
+                <div class="search">
+                    <form class="search-box" action="" method="">
+                        <input class="search-txt" type="text" name="" placeholder="검색...">
+                        <button class="search-btn" type="submit">
+                            <img src="static/images/search-icon.png" alt="search-icon">
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            {% block ul %}
+            <ul class="nav">
+                <li class="">
+                    <a href="">전체</a>
+                </li>
+                <li class>
+                    <a href="">스티커</a>
+                </li>
+                <li class>
+                    <a href="">문구</a>
+                </li>
+                <li class>
+                    <a href="">엽서</a>
+                </li>
+                <li class>
+                    <a href="">도자기</a>
+                </li>
+                <li class>
+                    <a href="">생활용품</a>
+                </li>
+                <li class>
+                    <a href="">먹거리</a>
+                </li>
+                <li class>
+                    <a href="">포스터</a>
+                </li>
+                <li class>
+                    <a href="">유리</a>
+                </li>
+                <li class>
+                    <a href="">비즈</a>
+                </li>
+                <li class>
+                    <a href="">가죽</a>
+                </li>
+                <li class>
+                    <a href="">기타</a>
+                </li>
+            </ul>
+            {% endblock %}
+        </header>
+        <section>
+            {% block section %}
+
+            {% endblock section %}
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global1.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+</head>
+
+<body>
+  {% with mesg = get_flashed_messages() %}
+  {% if mesg !=[] %}
+  <script>alert("{{ mesg[0] }}")</script>
+  {% endif %}
+  {% endwith %}
+
+  <div class="register-container">
+    <h1>회원가입</h1>
+    <p>TIGER MARKET의 회원이 되어보세요.</p>
+    <form method="post" action="/signup_post">
+      <div class="form-group">
+        <label for="user-id">아이디 *</label>
+        <div style="display: flex;">
+          <input type="text" id="user-id" name="user_id" placeholder="아이디 입력" required
+            style="flex: 1; margin-right: 7px;">
+          <button type="button" onclick="checkDuplicate()">중복확인</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">비밀번호 *</label>
+        <input type="password" id="password" name="password" placeholder="비밀번호 입력" minlength="5" pattern="[A-Za-z0-9]+"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm-password">비밀번호 재입력 *<span id="confirm-msg"></span></label>
+        <input type="password" id="confirm-password" name="confirm_password" placeholder="비밀번호 재입력"
+          pattern="[A-Za-z0-9]+" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">이메일 *</label>
+        <input type="email" id="email" name="email" placeholder="이메일 입력" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">휴대폰 번호 *</label>
+        <div class="button-group">
+          <input type="text" placeholder="000" name="phone-prefix" maxlength="3" required>
+          <input type="text" placeholder="0000" name="phone-middle" maxlength="4" required>
+          <input type="text" placeholder="0000" name="phone-suffix" maxlength="4" required>
+          <button type="button" onclick="sendVerificationCode()">인증번호 받기</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" id="verification-code" name="verification_code" placeholder="인증번호 입력" required>
+      </div>
+
+      <button type="submit" class="submit-button" onclick="register()">가입하기</button>
+    </form>
+    <a href="/index">실험용 링크</a>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/signup.js') }}"></script>
+</body>
+
+</html>

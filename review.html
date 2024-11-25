@@ -1,0 +1,227 @@
+{% extends "index_2.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/review.css') }}">
+{% endblock %}
+
+{% block ul %}
+<div class="breadcrumb">
+    메인 카테고리{{ main_category }} <span class="breadcrumb-tag">#</span> 행사명
+</div>
+<div class="touched"></div>
+{% endblock %}
+
+{% block section %}
+
+
+
+<!-- 상품 설명 추가 -->
+
+<div class="main-content">
+    <div class="about-product">
+        <div class="product-image"></div>
+
+        <div class="product-info">
+            <h2>상품명{{ name }}</h2>
+            <div class="price">10,000원{{ price }}</div>
+            <div class="shipping">배송비: 3,000원{{ shipping_cost }}</div>
+
+            <div class="button-group">
+                <button>직거래</button>
+                <button>택배</button>
+            </div>
+
+            <div class="rating">
+                <span>★</span> 4.8
+            </div>
+
+            <div class="short_description">
+                짧은 설명{{ short_description }}
+            </div>
+
+            <div class="purchase-btn"> 구매하기 </div>
+        </div>
+    </div>
+
+
+    <div class="tabs">
+        <div class="tab tab-active" onclick="showTab('description', event)">
+            <span>상세 설명</span>
+        </div>
+        <div class="tab" onclick="showTab('reviews', event)">
+            <span>리뷰</span>
+        </div>
+        <div class="tab" onclick="showTab('seller-info', event)">
+            <span>판매자 정보</span>
+        </div>
+    </div>
+
+    <div class="tab-content" id="description">
+        <!-- default tab : 상세 설명-->
+        <pre>
+    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+
+    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+        </pre>
+    </div>
+
+    <div class="tab-content" id="reviews" style="display: none;">
+        <div class="view-type">
+            <input type="radio" id="vt1" name="view-type" value="recent">
+            <label for="vt1"></label>
+            <label for="vt1">최신순</label>
+            <input type="radio" id="vt2" name="view-type" value="high-rate">
+            <label for="vt2"></label>
+            <label for="vt2">별점 높은 순</label>
+            <input type="radio" id="vt3" name="view-type" value="low-rate">
+            <label for="vt3"></label>
+            <label for="vt3">별점 낮은 순</label>
+        </div>
+        <div class="review-in">
+            <div class="writer-info">
+                <div class="profile-img"></div>
+                <div class="writer-info-in">
+                    <div class="writer-info-in-in">
+                        <p class="writer-name">닉네임</p>
+                        <p class="writer-grade">등급</p>
+                    </div>
+                    <p class="writer-purchased">블랙 XL 구매</p>
+                </div>
+            </div>
+            <div class="rate-stars">★★★★★</div>
+            <p class="review-content">친구 선물로 샀는데 너무 좋아요~</p>
+            <div class="react">
+                <div class="react-heart">
+                    <p class="heart-tag">♥</p>
+                    <p class="heart-num">12</p>
+                </div>
+                <div class="react-comment">
+                    <p class="comment-tag1">댓글</p>
+                    <p class="comment-num">12</p>
+                    <p class="comment-tag2">개</p>
+                </div>
+            </div>
+            <div class="view-comment" style="display: none;">
+                <div class="comment">
+                    <div class="profile-img"></div>
+                    <div class="comment-right">
+                        <div class="writer-name">닉네임</div>
+                        <div class="comment-context">배송 얼마나 걸렸나요?</div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="profile-img"></div>
+                    <div class="comment-right">
+                        <div class="writer-name">닉네임</div>
+                        <div class="comment-context">실물 색감 어떤가요?</div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="profile-img"></div>
+                    <div class="comment-right">
+                        <div class="writer-name">닉네임</div>
+                        <div class="comment-context">화면보다 조금 더 밝아요</div>
+                    </div>
+                </div>
+                <form class="write-comment-up" action="" method="">
+                    <textarea class="write-comment" name="" cols="80" rows="1" placeholder="댓글 달기..."></textarea>
+                </form>
+            </div>
+        </div>
+        <div class="review-in">
+            <div class="writer-info">
+                <div class="profile-img"></div>
+                <div class="writer-info-in">
+                    <div class="writer-info-in-in">
+                        <p class="writer-name">닉네임</p>
+                        <p class="writer-grade">등급</p>
+                    </div>
+                    <p class="writer-purchased">블랙 XL 구매</p>
+                </div>
+            </div>
+            <div class="rate-stars">★★★★★</div>
+            <div class="review-pic-out">
+                <div class="review-pic"></div>
+                <div class="review-pic"></div>
+            </div>
+            <p class="review-content">친구 선물로 샀는데 너무 좋아요~</p>
+            <div class="react">
+                <div class="react-heart">
+                    <p class="heart-tag">♥</p>
+                    <p class="heart-num">12</p>
+                </div>
+                <div class="react-comment">
+                    <p class="comment-tag1">댓글</p>
+                    <p class="comment-num">12</p>
+                    <p class="comment-tag2">개</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="seller-info" style="display: none;">
+        <div class="seller-info">
+            <div class="seller-profile">
+                <div class="profile-img"></div>
+                <p class="seller-name">닉네임</p>
+            </div>
+            <p class="seller-school">이화여자대학교 컴퓨터공학과(재학)</p>
+            <div id="seller-history">
+                <p class="seller-history">제nn회 이화여대 대동제</p>
+                <p class="seller-history">제n회 이화여대 종손</p>
+            </div>
+            <div id="seller-contact">
+                <p class="seller-contact">insta : @abcdef</p>
+                <p class="seller-contact">x : @abcdef</p>
+                <p class="seller-contact">mail : abcdef@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<aside class="relative-product">
+    <p class="aside-title">연관 상품</p>
+    <div class="relative-product-detail">
+        <div class="rp-img"></div>
+        <div class="rp-detail-right">
+            <div class="rp-name">상품명</div>
+            <div class="rp-price">10,000원</div>
+        </div>
+    </div>
+    <div class="relative-product-detail">
+        <div class="rp-img"></div>
+        <div class="rp-detail-right">
+            <div class="rp-name">상품명</div>
+            <div class="rp-price">10,000원</div>
+        </div>
+    </div>
+    <div class="relative-product-detail">
+        <div class="rp-img"></div>
+        <div class="rp-detail-right">
+            <div class="rp-name">상품명</div>
+            <div class="rp-price">10,000원</div>
+        </div>
+    </div>
+    <div class="relative-product-detail">
+        <div class="rp-img"></div>
+        <div class="rp-detail-right">
+            <div class="rp-name">상품명</div>
+            <div class="rp-price">10,000원</div>
+        </div>
+    </div>
+</aside>
+
+
+
+<script src="{{ url_for('static', filename='js/review.js') }}"></script>
+{% endblock section %}

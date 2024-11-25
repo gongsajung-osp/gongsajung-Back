@@ -1,0 +1,92 @@
+{% extends "index_2.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% block section %}
+<div class="left">
+  <span class="setting">
+    <img id="bubble" src="static/images/bubble.png" alt="thinking bubble">
+    <img id="tiger" src="static/images/tiger.png" alt="setting icon" onclick="settingToggleDropdown(event)">
+
+    <ul class="dropdown-setting">
+      {% if session['user_id'] %}
+      <li><b>{{session['user_id']}}님 반갑습니다!</b><br><br><br><a href="/logout"> 로그아웃</a></li><br>
+      {% else %}
+      <li><a href="/login">로그인</a></li><br>
+      {% endif %}
+      <li><a href="/reg_items">상품 등록</a></li><br>
+      <li><a href="/item_manage">상품 관리</a></li><br>
+      <li><a href="/history">구매 내역</a></li><br>
+      <li><a href="/profile">내 프로필</a></li>
+    </ul>
+  </span>
+</div>
+<div class="menu">
+  <div class="menu-reg-items">
+    <a href="/reg_items">상품 등록</a>
+  </div>
+  <div class="menu-history">
+    <a href="/history">구매내역</a>
+  </div>
+  <div class="menu-manage-items">
+    <a href="/item_manage">상품 관리</a>
+  </div>
+  <div class="menu-my-profile">
+    <a href="/profile">내 프로필</a>
+  </div>
+</div>
+
+<div class="context">
+  <span class="user-profile-card-basic">
+    <img id="user-profile-img" src="static/images/tiger.png">
+    <b>유저명</b>
+    <button type="" id="modify-self-introduction" onclick="modify_self_introduction()">소개 수정하기</button>
+    <div class="user-self-introduction">
+      대동제 참여 경력 20년<br>
+      재야의 고수
+      <hr style="border: 0.5px solid #d9d9d9">
+      연락처 : 010-1111-1111<br>
+      이메일 : ewha@ewha.ac.kr
+    </div>
+  </span>
+  <div class="user-profile-card-modify">
+    <h1>정보 수정하기</h1>
+    <hr style="width: 250px; position: absolute; left:0;">
+    <form action="/profile" method="POST" enctype="multipart/form-data" style="position: relative; top: 25px;">
+      <div class="modify-list">
+        <label for="profileImage">
+          <h3>프로필 사진</h3>
+        </label>
+        <input type="file" accept="image/*" id="profileImage" name="profileImage">
+      </div>
+      <div class="modify-list">
+        <label for="self-introduction">
+          <h3>자기소개</h3>
+          <h5>! 참여해본 행사를 함께 작성하면 매출이 평균 3배 증가해요 !</h5>
+        </label>
+        <textarea id="self-introduction" name="modified_introduction" cols="61" rows="7" maxlength="500"></textarea><br>
+      </div>
+      <div class="modify-list">
+        <label>
+          <h3>연락처</h3>
+        </label>
+        <input type="text" placeholder="010-0000-0000" name="modified_phone" maxlength="11" required>
+      </div>
+      <div class="modify-list">
+        <label>
+          <h3>이메일</h3>
+        </label>
+        <input type="email" placeholder="ewha@ewha.ac.kr" required><br><br>
+      </div>
+      <button type="submit">수정 완료!</button>
+    </form>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/global.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/profile.js') }}" defer></script>
+{% endblock %}

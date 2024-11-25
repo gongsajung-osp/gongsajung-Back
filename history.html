@@ -1,0 +1,80 @@
+{% extends "index_2.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/history.css') }}">
+{% endblock %}
+
+{% block ul %}
+{% endblock %}
+
+{% block section %}
+<div class="menu">
+  <div class="menu1">
+    <a href="/reg_items">상품 등록</a>
+  </div>
+  <div class="menu2">
+    <a href="/history">구매내역</a>
+  </div>
+  <div class="menu3">
+    <a href="/item_manage">상품 관리</a>
+  </div>
+  <div class="menu4">
+    <a href="/profile">내 프로필</a>
+  </div>
+</div>
+
+<div class="context">
+  <!-- db생기면 반복문으로 수정 -->
+  <div class="history">
+    <p class="purchase-date">2024.10.10.</p>
+    <div class="history-item">
+      <div class="purchased-img"></div>
+      <div class="purchased-info-in">
+        <div class="purchased-name">상품명</div>
+        <div class="deli-status">배송 중</div>
+        <div class="history-btn">
+          <button class="deli-status-check">배송 조회</button>
+          <button class="review-write-btn" style="display: none;" onclick="window.location.href='/reg_reviews';">리뷰
+            작성</button>
+        </div>
+      </div>
+    </div>
+    <div class="history-item">
+      <div class="purchased-img"></div>
+      <div class="purchased-info-in">
+        <div class="purchased-name">상품명</div>
+        <div class="deli-status">배송 중</div>
+        <button class="deli-status-check">배송 조회</button>
+        <button class="review-write-btn" style="display: none;" onclick="window.location.href='/reg_reviews';">리뷰
+          작성</button>
+      </div>
+    </div>
+  </div>
+  <div class="history">
+    <p class="purchase-date">2024.09.10.</p>
+    <div class="history-item">
+      <div class="purchased-img"></div>
+      <div class="purchased-info-in">
+        <div class="purchased-name">상품명</div>
+        <div class="deli-status">배송 완료</div>
+        <button class="deli-status-check">배송 조회</button>
+        <button class="review-write-btn" style="display: none;" onclick="window.location.href='/reg_reviews';">리뷰
+          작성</button>
+      </div>
+    </div>
+    <div class="history-item">
+      <div class="purchased-img"></div>
+      <div class="purchased-info-in">
+        <div class="purchased-name">상품명</div>
+        <div class="deli-status">배송 완료</div>
+        <button class="deli-status-check">배송 조회</button>
+        <button class="review-write-btn" style="display: none;" onclick="window.location.href='/reg_reviews';">리뷰
+          작성</button>
+      </div>
+    </div>
+  </div>
+  <!-- /수정 -->
+</div>
+<script src="{{ url_for('static', filename='js/history.js') }}"></script>
+
+{% endblock section %}

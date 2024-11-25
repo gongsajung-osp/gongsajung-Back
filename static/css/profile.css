@@ -1,0 +1,38 @@
+.nav {
+  display: none !important;
+}
+
+.user-profile-card-modify {
+  display: none;
+}
+
+#user-profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+  background-color: grey;
+}
+
+.profile-top {
+  display: block;
+}
+
+.user-self-introduction {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.profile-top b {
+  font-size: 30px;
+  position: absolute;
+  top: 105px;
+  left: 110px;
+}
+
+.modify-self-introduction {
+  border: none;
+  position: absolute;
+  left: 110px;
+}

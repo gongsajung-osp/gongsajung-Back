@@ -14,6 +14,24 @@
 <body>
     <div class="container">
         <header>
+            <div class="left">
+                <span class="setting">
+                  <img id="bubble" src="static/images/bubble.png" alt="thinking bubble">
+                  <img id="tiger" src="static/images/tiger.png" alt="setting icon" onclick="settingToggleDropdown(event)">
+        
+                  <ul class="dropdown-setting">
+                    {% if session['user_id'] %}
+                    <li><b>{{session['user_id']}}님 반갑습니다!</b><br><br><br><a href="/logout"> 로그아웃</a></li><br>
+                    {% else %}
+                    <li><a href="/login">로그인</a></li><br>
+                    {% endif %}
+                    <li><a href="/reg_items">상품 등록</a></li><br>
+                    <li><a href="/item_manage">상품 관리</a></li><br>
+                    <li><a href="/history">구매 내역</a></li><br>
+                    <li><a href="/profile">내 프로필</a></li>
+                  </ul>
+                </span>
+              </div>
             <div class="header-top">
                 <div class="logo">
                     <a href="/landing">
@@ -72,11 +90,27 @@
             {% endblock %}
         </header>
         <section>
+            <div class="menu">
+                <div class="menu-reg_items">
+                  <a href="/reg_items">상품 등록</a>
+                </div>
+                <div class="menu-history">
+                  <a href="/history">상품 목록</a>
+                </div>
+                <div class="menu-item_manage">
+                  <a href="/item_manage">상품 관리</a>
+                </div>
+                <div class="menu-profile">
+                  <a href="/profile">내 프로필</a>
+                </div>
+              </div>
+
             {% block section %}
 
             {% endblock section %}
         </section>
     </div>
+    <script src="{{ url_for('static', filename='js/global.js') }}"></script>
 </body>
 
 </html>

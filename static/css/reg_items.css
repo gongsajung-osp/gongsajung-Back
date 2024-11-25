@@ -1,61 +1,6 @@
-/*
-상단 네비
-*/
-.menu-history,
-.menu-manage-items,
-.menu-my-profile {
-  border: 1px solid #cccccc;
-  background-color: #e6e6e6;
-  width: 125px;
-  height: 40px;
-  border-radius: 150px 150px 0 0;
-  margin: 0;
-}
-
-.menu-reg-items:hover,
-.menu2:hover,
-.menu3:hover,
-.menu4:hover {
-  border: 1px solid #fea84d;
-  background-color: #fea84d;
-  width: 125px;
-  height: 40px;
-  border-radius: 150px 150px 0 0;
-  margin: 0;
-}
-
-input::placeholder {
-  color: #ccc;
-}
-
-.menu-reg-items {
-  border: 1px solid #fea84d;
-  background-color: #fea84d;
-  width: 125px;
-  height: 40px;
-  border-radius: 150px 150px 0 0;
-  margin: 0;
-}
-
-.menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
-  padding-top: 30px;
-  border-bottom: 1px solid #cccccc;
-}
-
-.menu div {
-  margin: 0;
-}
-
-.menu a {
-  display: block;
-  padding: 10px 15px;
-  text-align: center;
-  text-decoration: none;
-  color: white;
+.menu-reg_items {
+  border: 1px solid #fea84d !important;
+  background-color: #fea84d !important;
 }
 
 .context {

@@ -14,13 +14,13 @@
     padding: 0 0 20px 0;
 }
 
-.purchase-data {
+/* .purchase-data {
     padding: 0; margin: 20px 0 10px 0;
     text-align: left;
     font-size: 1.3rem;
     color: black;
     font-weight: bold;
-}
+} */
 
 .purchased-img {
     width: 100px; 
@@ -28,18 +28,17 @@
     border: 1px solid #cccccc;
     background-color: #e6e6e6;
     margin-right: 10px;
-    overflow: hidden; /* 이미지가 컨테이너 밖으로 넘치지 않도록 설정 */
-    display: flex; /* 이미지 정렬 */
+    overflow: hidden;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .purchased-img img {
-    width: 100%; /* 부모의 너비에 맞춤 */
-    height: 100%; /* 부모의 높이에 맞춤 */
-    object-fit: cover; /* 비율을 유지하며 컨테이너에 맞게 조정 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-
 
 .purchased-info-in {
     margin-left: 10px;
@@ -48,19 +47,25 @@
 .purchased-name {
     color: black;
     font-size: 1.4rem;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
-.deli-status {
+/* .deli-status {
     color: #cccccc;
     margin-bottom: 20px;
-}
+} */
 
 .history {
     border-bottom: 1.5px solid #cccccc;
+    margin-bottom: 20px;
 }
 
-.deli-status-check, .review-write-btn {
+.product-category, .product-price {
+    margin-bottom: 5px;
+    color: gray;
+}
+
+.review-write-btn {
     border: 1px solid black;
     background-color: white;
     margin-right: 10px;
@@ -72,4 +77,38 @@
 
 .history-btn {
     display: flex;
+}
+
+.product-category-test, .product-price-test {
+    margin-bottom: 5px;
+    color: gray;
+}
+.history-item-test{
+    display: flex;
+    padding: 0 0 20px 0;
+}
+.purchased-img-test {
+    width: 100px; 
+    height: 100px;
+    border: 1px solid #cccccc;
+    background-color: #e6e6e6;
+    margin-right: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.purchased-name-test {
+    color: black;
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+.history-btn-test {
+    display: flex;
+}
+
+.purchased-info-in-test {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
 }

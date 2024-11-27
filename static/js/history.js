@@ -11,3 +11,18 @@ window.onload = function () {
         }
     }
 }
+
+// 구매 데이터 받기
+window.onload = function() {
+
+    const contentName = localStorage.getItem("movedName");
+    const contentCategory = localStorage.getItem("movedCategory");
+    const contentPrice = localStorage.getItem("movedPrice");
+
+    if (contentName && contentCategory && contentPrice) {
+        document.getElementById("item-test").style.display = "block";
+        document.getElementById("received-name").textContent = contentName;
+        document.getElementById("received-category").textContent = contentCategory;
+        document.getElementById("received-price").textContent = contentPrice;
+    }
+}

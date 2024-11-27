@@ -71,7 +71,25 @@ document.getElementById("purchase-btn").onclick = function() {
   document.getElementById("purchase-popup1").style.display = "block";
 };
 
+
+ // localStorage 초기화
+window.onload = function() {
+  localStorage.clear(); 
+};
+
+//구매 확정 - 구매 아이템 데이터 전송
 document.getElementById("confirm-purchase").onclick = function() {
+
+  const contentName = document.getElementById("moveName").textContent;
+  localStorage.setItem("movedName", contentName);
+
+  const contentCategory = document.getElementById("moveCategory").textContent;
+  localStorage.setItem("movedCategory", contentCategory);
+
+  const contentPrice = document.getElementById("movePrice").textContent;
+  localStorage.setItem("movedPrice", contentPrice);
+
+
   document.getElementById("purchase-popup1").style.display = "none";
   document.getElementById("purchase-popup2").style.display = "block";
   setTimeout(function() {

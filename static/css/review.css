@@ -20,7 +20,7 @@ button {
 .main-content {
     display: flex;
     flex-direction: column;
-    margin-top: 8.5rem;
+    margin-top: 2.5rem;
     /* padding-left: 20px; */
     width: 78%;
     float: left;
@@ -434,6 +434,7 @@ textarea {
 }
 
 .relative-product {
+    top: 13.5rem;
     position: fixed;
     right: 210px;
     width: 20%;
@@ -446,7 +447,7 @@ textarea {
     padding-left: 20px;
     font-size: large;
     font-weight: bolder;
-    margin-top: 8.35rem;
+    /* margin-top: 8.35rem; */
 }
 
 .relative-product-detail {
@@ -577,5 +578,27 @@ textarea {
 
 #purchase-popup1, #purchase-popup2 {
     z-index: 100;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    background-color: white;
+    border-radius: 30px;
+    border: 2px solid black;
+    padding: 20px;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: black;
+}
+
+#purchase-popup1 button, #move-btn a {
+    color: black;
+    font-size: 0.75rem;
+    padding: 0;
 }

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block ul %}
-<div class="breadcrumb">
+<div class="breadcrumb" id="moveCategory">
     #{{ product_category }} <span class="breadcrumb-tag">#{{event_name}}</span>
 </div>
 <div class="touched"></div>
@@ -23,14 +23,16 @@
         
         
         <div class="product-image">
-    <img src="{{ url_for('static', filename=img_path) }}" alt="{{ name }}">
-</div>
+        <img src="{{ url_for('static', filename=img_path) }}" alt="{{ name }}"> </div>
 
+        <h1 id="moveName">test</h1>
+        <div class="price-test" id="movePrice">test원</div>
+        <div class="shipping-test">배송비: </div>
 
 
         <div class="product-info">
-            <h2>{{ name }}</h2>
-            <div class="price">{{ price }}원</div>
+            <h2 id="moveName">{{ name }}</h2>
+            <div class="price" id="movePrice">{{ price }}원</div>
             <div class="shipping">배송비: {{ shipping_cost }}</div>
 
             <div class="button-group">
@@ -91,6 +93,7 @@
     </div>
 
 
+    <!-- 리뷰 탭 -->
     <div class="tab-content" id="reviews" style="display: none;">
         <div class="view-type">
             <input type="radio" id="vt1" name="view-type" value="recent">
@@ -146,7 +149,61 @@
         </div>
     </div>
     {% endfor %}
+
+
+    <!-- 판매자 정보 탭 -->
+    <div class="tab-content" id="seller-info" style="display: none;">
+        <div class="seller-info">
+            <div class="seller-profile">
+                <div class="profile-img"></div>
+                <p class="seller-name">닉네임</p>
+            </div>
+            <p class="seller-school">이화여자대학교 컴퓨터공학과(재학)</p>
+            <div id="seller-history">
+                <p class="seller-history">제nn회 이화여대 대동제</p>
+                <p class="seller-history">제n회 이화여대 종손</p>
+            </div>
+            <div id="seller-contact">
+                <p class="seller-contact">insta : @abcdef</p>
+                <p class="seller-contact">x : @abcdef</p>
+                <p class="seller-contact">mail : abcdef@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<aside class="relative-product">
+    <p class="aside-title">연관 상품</p>
+    <div class="relative-product-detail">
+        <div class="rp-img"></div>
+        <div class="rp-detail-right">
+            <div class="rp-name">상품명</div>
+            <div class="rp-price">10,000원</div>
+        </div>
+    </div>
+    <div class="relative-product-detail">
+        <div class="rp-img"></div>
+        <div class="rp-detail-right">
+            <div class="rp-name">상품명</div>
+            <div class="rp-price">10,000원</div>
+        </div>
+    </div>
+    <div class="relative-product-detail">
+        <div class="rp-img"></div>
+        <div class="rp-detail-right">
+            <div class="rp-name">상품명</div>
+            <div class="rp-price">10,000원</div>
+        </div>
+    </div>
+    <div class="relative-product-detail">
+        <div class="rp-img"></div>
+        <div class="rp-detail-right">
+            <div class="rp-name">상품명</div>
+            <div class="rp-price">10,000원</div>
+        </div>
+    </div>
+</aside>
 
 <script src="{{ url_for('static', filename='js/review.js') }}"></script>
 {% endblock section %}

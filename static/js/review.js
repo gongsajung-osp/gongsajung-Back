@@ -89,6 +89,8 @@ document.getElementById("confirm-purchase").onclick = function() {
   const contentPrice = document.getElementById("movePrice").textContent;
   localStorage.setItem("movedPrice", contentPrice);
 
+  const contentImage = document.querySelector(".product-image img").src;
+  localStorage.setItem("movedImage", contentImage);
 
   document.getElementById("purchase-popup1").style.display = "none";
   document.getElementById("purchase-popup2").style.display = "block";

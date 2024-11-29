@@ -18,11 +18,13 @@ window.onload = function() {
     const contentName = localStorage.getItem("movedName");
     const contentCategory = localStorage.getItem("movedCategory");
     const contentPrice = localStorage.getItem("movedPrice");
+    const contentImage = localStorage.getItem("movedImage");
 
-    if (contentName && contentCategory && contentPrice) {
+    if (contentName && contentCategory && contentPrice && contentImage) {
         document.getElementById("item-test").style.display = "block";
         document.getElementById("received-name").textContent = contentName;
         document.getElementById("received-category").textContent = contentCategory;
         document.getElementById("received-price").textContent = contentPrice;
+        document.getElementById("received-img").src = contentImage;
     }
 }

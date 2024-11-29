@@ -62,6 +62,9 @@ def view_item():
 def view_review_tomato():
     return render_template("review_tomato.html")
 
+@application.route("/reg_reviews_tomato")
+def view_reg_reviews_tomato():
+    return render_template("reg_reviews_tomato.html")
 
 @application.route("/signup")
 def view_signup():

@@ -117,9 +117,6 @@
     <div class="rate-stars">
       {% for i in range(review.rating) %} ★ {% endfor %}
     </div>
-    <p class="review-content">{{ review.review_text }}</p>
-    <!--리뷰 내용-->
-
     {% if review.review_image %}
     <div class="review-pic-out">
       <img
@@ -128,6 +125,10 @@
       />
     </div>
     {% endif %}
+    <p class="review-content">{{ review.review_text }}</p>
+    <!--리뷰 내용-->
+
+    
 
     <div class="react">
       <div class="react-heart">

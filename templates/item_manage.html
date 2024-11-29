@@ -10,6 +10,25 @@
 {% block section %}
 
 <div class="context">
+  <div class="history" id="item-test" style="display: none;">
+    <div class="history-item" id="reged-item">
+
+      <a href="/review_tomato">
+        <div class="purchased-img">
+          <img id="received-img" src="">
+        </div>
+      </a>
+      <div class="purchased-info-in">
+        <div class="purchased-name" id="received-name">아이템</div>
+        <div class="product-category" id="received-category">#카테고리</div>
+        <div class="product-price" id="received-price">5,000원</div>
+        <div class="history-btn">
+            <button class="delete-btn">상품 삭제</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
     <div class="history">
         {% if items %}
             {% for item_name, item in items.items() %}

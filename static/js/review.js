@@ -59,10 +59,7 @@ document.getElementById("purchase-btn").onclick = function () {
   document.getElementById("purchase-popup1").style.display = "block";
 };
 
-// localStorage 초기화
-window.onload = function () {
-  localStorage.clear();
-};
+
 
 //구매 확정 - 구매 아이템 데이터 전송
 document.getElementById("confirm-purchase").onclick = function () {

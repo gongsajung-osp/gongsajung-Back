@@ -11,10 +11,10 @@
 <div class="result-container">
   <h2>상품 등록 결과</h2>
   <p>
-    <strong>상품명:</strong> {{ data.get('product_name') }}
+    <strong id="moveName">상품명:</strong> {{ data.get('product_name') }}
   </p>
   <p>
-    <strong>카테고리:</strong> {{ data.get('product_category') }}
+    <strong id="moveCategory">카테고리:</strong> {{ data.get('product_category') }}
   </p>
   <p>
     <strong>행사명:</strong> {{ data.get('event_name') }}
@@ -23,7 +23,7 @@
     <strong>상품 설명:</strong> {{ data.get('product_explain') }}
   </p>
   <p>
-    <strong>가격:</strong> {{ data.get('product_price') }} 원
+    <strong id="movePrice">가격:</strong> {{ data.get('product_price') }} 원
   </p>
   <p>
     <strong>배송 방법:</strong> {{ " ".join(data['delivery_methods']) }}
@@ -36,14 +36,14 @@
   </p>
 
   {% if img_path %}
-  <div>
+  <div class="prouct-image">
     <strong>상품 이미지:</strong><br>
     <img src="{{ url_for('static', filename=img_path) }}" alt="{{ name }}" style="max-width: 400px;">
   </div>
   {% endif %}
 
   <a href="/index" class="product-upload">
-    <button class="submit-btn">확인</button>
+    <button class="submit-btn" id="submit_btn">확인</button>
   </a>
 
 </div>

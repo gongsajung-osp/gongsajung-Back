@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "moneygraphy-pixel";
+  src: url("../fonts/Moneygraphy-Pixel.woff2") format("woff2"),
+  url("../fonts/Moneygraphy-Pixel.woff") format("woff"),
+  url("../fonts/Moneygraphy-Pixel.ttf") format("truetype");
+  font-weight: normal;
+}
+
 .category-nav {
   display: flex;
   justify-content: space-around;
@@ -79,6 +87,7 @@
   font-size: 16px;
   color: #333;
   margin-top: 5px;
+  font-family: "moneygraphy-pixel";
 }
 
 .product-price {

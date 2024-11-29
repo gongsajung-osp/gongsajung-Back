@@ -5,6 +5,14 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "moneygraphy-pixel";
+  src: url("../fonts/Moneygraphy-Pixel.woff2") format("woff2"),
+  url("../fonts/Moneygraphy-Pixel.woff") format("woff"),
+  url("../fonts/Moneygraphy-Pixel.ttf") format("truetype");
+  font-weight: normal;
+}
+
 html {
   overflow: hidden;
 }

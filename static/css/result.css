@@ -1,0 +1,45 @@
+.menu-reg_items {
+    border: 1px solid #fea84d !important;
+    background-color: #fea84d !important;
+  }
+
+@font-face {
+    font-family: "moneygraphy-pixel";
+    src: url("../fonts/Moneygraphy-Pixel.woff2") format("woff2"),
+    url("../fonts/Moneygraphy-Pixel.woff") format("woff"),
+    url("../fonts/Moneygraphy-Pixel.ttf") format("truetype");
+    font-weight: normal;
+  }
+.result-container {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.submit-btn:hover {
+    background-color: #ff982a;
+    border: #ff982a;
+  }
+  
+  .product-upload {
+    margin: 20px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .submit-btn {
+    padding: 8px 20px;
+    border-radius: 30px;
+    background-color: #fea84d;
+    border: #fea84d;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    
+    font-family: "moneygraphy-pixel";
+  }
+
+  a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: white;
+}

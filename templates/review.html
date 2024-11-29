@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block ul %}
-<div class="breadcrumb" id="moveCategory">
-    #{{ product_category }} <span class="breadcrumb-tag">#{{event_name}}</span>
+<div class="breadcrumb">
+    <span class="breadcrumb" id="moveCategory">#{{ product_category }}</span>
+     <span class="breadcrumb-tag">#{{event_name}}</span>
 </div>
 <div class="touched"></div>
 {% endblock %}
@@ -25,9 +26,9 @@
         <div class="product-image">
         <img src="{{ url_for('static', filename=img_path) }}" alt="{{ name }}"> </div>
 
-        <h1 id="moveName">test</h1>
+        <!-- <h1 id="moveName">test</h1>
         <div class="price-test" id="movePrice">test원</div>
-        <div class="shipping-test">배송비: </div>
+        <div class="shipping-test">배송비: </div> -->
 
 
         <div class="product-info">

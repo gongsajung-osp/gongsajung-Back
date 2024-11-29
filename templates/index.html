@@ -12,6 +12,21 @@
   <section>
     <!-- js를 통해 동적으로 추가 예정 -->
 
+    <!-- 테스트용 아이템 -->
+    <div class="product-card">
+      <a href="/review_tomato">
+    
+        <div class="product-image">
+          <img src="static/images/토마토.jpg" alt="토마토">
+        </div>
+        <!-- 상품 정보 -->
+        <div class="product-info">
+          <span class="product-name">토마토</span>
+          <span class="product-price">2,500원</span>
+        </div>
+      </a>
+    </div>
+
     {% if items %}
       {% for product_name, product_details in items.items() %}
       <div class="product-card">

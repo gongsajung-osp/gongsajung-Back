@@ -58,6 +58,10 @@ def logout_user():
 def view_item():
     return render_template("item.html")
 
+@application.route("/review_tomato")
+def view_review_tomato():
+    return render_template("review_tomato.html")
+
 
 @application.route("/signup")
 def view_signup():
@@ -186,7 +190,16 @@ def view_profile():
 
 @application.route("/item_manage")
 def manage_item():
-    return render_template("item_manage.html")
+     # 로그인 여부 확인
+    user_id = session.get("user_id")
+    
+    if not user_id:
+        flash("로그인이 필요합니다.")  # 로그인 요구 메시지
+        return redirect(url_for("view_login"))  # 로그인 페이지로 리디렉션
+    
+    # 로그인된 경우 Firebase에서 상품 데이터 가져오기
+    items = DB.get_items()
+    return render_template("item_manage.html", items=items)
 
 @application.route("/submit_item")
 def reg_item_submit():

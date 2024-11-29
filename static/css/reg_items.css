@@ -3,24 +3,57 @@
   background-color: #fea84d !important;
 }
 
+@font-face {
+  font-family: "moneygraphy-pixel";
+  src: url("../fonts/Moneygraphy-Pixel.woff2") format("woff2"),
+  url("../fonts/Moneygraphy-Pixel.woff") format("woff"),
+  url("../fonts/Moneygraphy-Pixel.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+select, input, textarea, #product-img {
+  font-family: 'Pretendard-Regular';
+}
+
 .context {
-  display: block;
-  margin-left: 27%;
-  align-items: center;
+  /* display: block;
+  /* margin-left: 27%; */
+  /* align-items: center;
   justify-content: center;
   width: 400px;
   height: auto;
   position: relative;
-  /* 필요에 따라 absolute, fixed로 변경 */
-  z-index: 10;
-  /* 다른 요소보다 위에 오도록 */
+  z-index: 10; */
+
+  width: 500px;
+    background-color: white;
+    margin: 0 auto;
+    padding-top: 10px;
 }
 
 .product-label {
   font-size: 1.1em;
-  font-weight: bold;
-  color: #454545;
-  padding-right: 7px;
+  /* font-weight: bold; */
+  color: black;
+  /* padding-right: 7px; */
+  width: 110px;
+  display: inline-block;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-family: "moneygraphy-pixel";
+}
+
+.product-explain {
+  display: flex;
+  align-items: center;
 }
 
 .input-box {
@@ -70,6 +103,66 @@ textarea {
 
 .product-deli {
   display: flex;
+  align-items: center;
+}
+
+.deli-type {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1.5px solid #cccccc;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.deli-type:hover, .checkbox-active {
+  background-color: #fea84d;
+  color: white;
+  border: 1.5px solid #fea84d;
+}
+
+#deli-price {
+  display: none;
+  margin-left: 10px;
+  padding: 5px;
+  border: 1.5px solid #cccccc;
+  display: flex;
+  align-items: center;
+}
+
+.deli-price-A {
+  margin-right: 10px;
+  padding: 7px;
+  border-radius: 20px;
+  background-color: #fea84d;
+  color: white;
+  font-size: 0.9em;
+}
+
+.deli-price-B {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #cccccc;
+  padding: 5px;
+}
+
+.deli-price-in {
+  border: none;
+  outline: none;
+  width: 70px;
+  text-align: right;
+}
+
+.deli-btn {
+  display: none;
+}
+
+.won2 {
+  margin-left: 5px;
+  font-size: 0.9em;
+}
+
+/* .product-deli {
+  display: flex;
   gap: 10px;
 }
 
@@ -84,9 +177,9 @@ textarea {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-}
+} */
 
-.submit-btn {
+/* .submit-btn {
   border:none;
   padding:7px 12px;
   font-size: 15px;
@@ -95,8 +188,29 @@ textarea {
   color:white;
   background-color: #fea84d;
   border-radius: 3px;
-}
+  margin: 0 auto;
+} */
 
 .submit-btn:hover {
   background-color: #ff982a;
+  border: #ff982a;
+}
+
+.product-upload {
+  margin: 20px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-btn {
+  padding: 8px 20px;
+  border-radius: 30px;
+  background-color: #fea84d;
+  border: #fea84d;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  
+  font-family: "moneygraphy-pixel";
 }

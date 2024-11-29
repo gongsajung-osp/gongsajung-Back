@@ -52,7 +52,7 @@
     <!-- 상품 설명 -->
     <div class="product-explain">
       <label for="product-explain" class="product-label" required>상품 설명</label>
-      <textarea id="product-explain" class="input-box" name="product_explain" cols="67" rows="7"
+      <textarea id="product-explain" class="input-box" name="product_explain" cols="47" rows="7"
         placeholder="상품 설명"></textarea>
     </div><br>
 
@@ -67,17 +67,33 @@
     <div class="product-deli">
       <span class="product-label">배송</span>
 
-      <!-- 직거래 -->
+      <label class="deli-type">
+        <input id="deli-direct" type="checkbox" class="deli-btn" name="delivery_methods[]" value="직거래"> 직거래
+    </label>
+    <label class="deli-type">
+        <input id="deli-delivery" type="checkbox" class="deli-btn" name="delivery_methods[]" value="택배"> 택배
+    </label>
+    <label class="deli-type">
+        <input id="deli-mail" type="checkbox" class="deli-btn" name="delivery_methods[]" value="우편"> 우편
+    </label>
+    <div id="deli-price" style="visibility: hidden;">
+        <div class="deli-price-A">배송비</div>
+        <div class="deli-price-B">
+            <input class="deli-price-in" type="number" name="">
+            <span class="won2">원</span>
+        </div>
+    </div>
+
+      <!-- 직거래
       <input id="deli-direct" type="checkbox" class="deli-btn" name="delivery_methods[]" value="직거래">
       <label for="deli-direct" class="deli-type">직거래</label>
 
-      <!-- 택배 -->
       <input id="deli-delivery" type="checkbox" class="deli-btn" name="delivery_methods[]" value="택배">
       <label for="deli-delivery" class="deli-type">택배</label>
 
-      <!-- 우편 -->
       <input id="deli-mail" type="checkbox" class="deli-btn" name="delivery_methods[]" value="우편">
       <label for="deli-mail" class="deli-type">우편</label>
+  -->
     </div> <br>
 
     <div class="seller-phone">
@@ -86,7 +102,10 @@
     </div>
 
     <br>
-    <button type="submit" class="submit-btn">등록</button>
+    <div class="product-upload">
+      <button type="submit" class="submit-btn">등록</button>
+    </div>
+    
 
   </form>
 </div>

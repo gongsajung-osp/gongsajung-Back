@@ -4,6 +4,9 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
 {% endblock %}
 
+{% block ul %}
+{% endblock %}
+
 {% block section %}
 <div class="result-container">
   <h2>상품 등록 결과</h2>
@@ -35,8 +38,13 @@
   {% if img_path %}
   <div>
     <strong>상품 이미지:</strong><br>
-    <img src="{{img_path}}" alt="상품 이미지" style="max-width: 400px;">
+    <img src="{{ url_for('static', filename=img_path) }}" alt="{{ name }}" style="max-width: 400px;">
   </div>
   {% endif %}
+
+  <a href="/index" class="product-upload">
+    <button class="submit-btn">확인</button>
+  </a>
+
 </div>
 {% endblock %}

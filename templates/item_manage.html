@@ -8,4 +8,45 @@
 {% endblock %}
 
 {% block section %}
+
+<div class="context">
+    <div class="history">
+        {% if items %}
+            {% for item_name, item in items.items() %}
+
+            <div class="history-item" id="reged-item">
+              <a href="/review/{{ item_name }}">
+                <div class="purchased-img">
+                  <img src="{{ url_for('static', filename=item.img_path) }}" alt="{{ item.product_category }}">
+                </div>
+              </a>
+              <div class="purchased-info-in">
+                <div class="purchased-name">{{ item_name }}</div>
+                <div class="product-category">#{{ item.product_category }}</div>
+                <div class="product-price">{{ item.product_price }}원</div>
+                <div class="history-btn">
+                  <button class="delete-btn">상품 삭제</button>
+                </div>
+              </div>
+            </div>
+
+            {% endfor %}
+            {% else %}
+            <p class="no-items">등록된 상품이 없습니다.</p>
+            {% endif %}
+    </div>
+    <div id="purchase-popup1" style="display: none;">
+        <p>삭제하시겠습니까?</p>
+        <button id="confirm-purchase">삭제</button>
+        <button id="cancel-purchase">취소</button>
+        <p></p>
+    </div>
+
+    <div id="purchase-popup2" style="display: none;">
+        <p>삭제되었습니다.</p>
+        <p></p>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/item_manage.js') }}"></script>
 {% endblock section %}

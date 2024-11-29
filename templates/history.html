@@ -10,40 +10,55 @@
 {% block section %}
 
 <div class="context">
-    <div class="history-item-test" id="item-test" style="display: none;">
-        <div class="purchased-img-test">
+  <div class="history" id="item-test" style="display: none;">
+    <div class="test-date">2024.11.29.</div>
+    <div class="history-item">
+
+      <a href="/review/{{ item_name }}">
+        <div class="purchased-img">
+          <img id="received-img" src="">
         </div>
-        <div class="purchased-info-in-test" >
-          <div class="purchased-name-test" id="received-name"></div>
-          <div class="product-category-test" id="received-category"></div>
-          <div class="product-price-test" id="received-price"></div>
-          <div class="history-btn-test">
-            
-          </div>
+      </a>
+      <div class="purchased-info-in">
+        <div class="purchased-name" id="received-name">아이템</div>
+        <div class="product-category" id="received-category">#카테고리</div>
+        <div class="product-price" id="received-price">5,000원</div>
+        <div class="history-btn">
+          <button class="review-write-btn" onclick="window.location.href='/write_review/{{ item_name }}';"">리뷰 작성</button>
         </div>
       </div>
-  {% if items %}
-    {% for item_name, item in items.items() %}
-      <div class="history">
-        <div class="history-item">
-          <div class="purchased-img">
-            <img src="{{ url_for('static', filename=item.img_path) }}" alt="{{ item.product_category }}">
-          </div>
-          <div class="purchased-info-in">
-            <div class="purchased-name">{{ item_name }}</div>
-            <div class="product-category">#{{ item.product_category }}</div>
-            <div class="product-price">{{ item.product_price }}원</div>
-            <div class="history-btn">
-              <button class="review-write-btn" onclick="window.location.href='/write_review/{{ item_name }}';">리뷰 작성</button>
+    </div>
+  </div>
+
+  <div class="history">
+            <div class="purchased-date">2024.11.02</div>
+            {% if items %}
+            {% for item_name, item in items.items() %}
+
+            <div class="history-item">
+              <a href="/review/{{ item_name }}">
+                <div class="purchased-img">
+                  <img src="{{ url_for('static', filename=item.img_path) }}" alt="{{ item.product_category }}">
+                </div>
+              </a>
+              <div class="purchased-info-in">
+                <div class="purchased-name">{{ item_name }}</div>
+                <div class="product-category">#{{ item.product_category }}</div>
+                <div class="product-price">{{ item.product_price }}원</div>
+                <div class="history-btn">
+                  <button class="review-write-btn" onclick="window.location.href='/write_review/{{ item_name }}';">리뷰
+                    작성</button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-  {% else %}
-    <p class="no-items">등록된 상품이 없습니다.</p>
-  {% endif %}
+
+            {% endfor %}
+            {% else %}
+            <p class="no-items">등록된 상품이 없습니다.</p>
+            {% endif %}
+
+  </div>
 </div>
 
-<script src="{{ url_for('static', filename='js/history.js') }}"></script>
-{% endblock section %}
+      <script src="{{ url_for('static', filename='js/history.js') }}"></script>
+      {% endblock section %}

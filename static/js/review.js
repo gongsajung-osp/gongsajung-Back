@@ -16,39 +16,22 @@ document.querySelectorAll(".react-comment").forEach((commentButton, index) => {
 //tab 전환
 const tabs = document.querySelectorAll(".tab");
 
-tabs.forEach((tab) => {
-  tab.addEventListener("click", function () {
-    //tabs.forEach((t) => t.classList.remove("tab-active"));
-    //this.classList.add("tab-active");
-
-    //모든 탭 숨기기
-    const contents = document.querySelectorAll(".tab-content");
-    contents.forEach((content) => (content.style.display = "none"));
-
-    // 현재 클릭한 탭의 콘텐츠 보이기
-    const targetId = this.getAttribute("onclick").match(/'(.*?)'/)[1];
-    document.getElementById(targetId).style.display = "block";
+tabs.forEach(tab => {
+  tab.addEventListener('click', function () {
+    tabs.forEach(t => t.classList.remove('tab-active'));
+    this.classList.add('tab-active');
   });
 });
 
 function showTab(tabId, event) {
-  const contents = document.querySelectorAll(".tab-content");
-  contents.forEach((content) => {
-    content.style.display = "none";
+  const contents = document.querySelectorAll('.tab-content');
+  contents.forEach(content => {
+    content.style.display = 'none';
   });
 
   const activeTab = document.getElementById(tabId);
   if (activeTab) {
     activeTab.style.display = "block";
-  }
-
-  const tabs = document.querySelectorAll(".tab");
-  tabs.forEach((tab) => {
-    tab.classList.remove("active");
-  });
-
-  if (event) {
-    event.currentTarget.classList.add("active");
   }
 }
 

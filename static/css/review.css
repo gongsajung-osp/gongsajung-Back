@@ -1,7 +1,22 @@
+@font-face {
+    font-family: "moneygraphy-pixel";
+    src:
+    /* url("../fonts/Moneygraphy-Pixel.woff2") format("woff2"),
+    url("../fonts/Moneygraphy-Pixel.woff") format("woff"), */
+    url("../fonts/Moneygraphy-Pixel.ttf") format("truetype");
+    font-weight: normal;
+  }
+
+  @font-face {
+    font-family: 'HakgyoansimDunggeunmisoTTF-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-B.woff2') format('woff2');
+    /* font-weight: 700; */
+    font-style: normal;
+}
+
 .write-comment,
 button {
     font-family: 'Pretendard-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
     font-size: 1em;
@@ -10,7 +25,6 @@ button {
 
 button {
     font-family: 'Pretendard-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
     font-size: 1em;
@@ -42,6 +56,7 @@ button {
     height: 40px;
     /* border-radius: 0 0 150px 150px; */
     margin: 0;
+    font-family: 'moneygraphy-pixel';
 }
 
 .tab:hover {
@@ -66,6 +81,7 @@ button {
     display: flex;
     justify-content: left;
     align-items: left;
+    text-align: center;
     padding-left: 20px;
     width: 100%;
     position: sticky;
@@ -140,6 +156,7 @@ button {
 .product-info h2 {
     font-size: 1.5rem;
     margin: 0;
+    font-family: 'moneygraphy-pixel' !important;
 }
 
 .product-info .price {
@@ -206,8 +223,9 @@ button {
     margin-top: 40px;
     text-align: center;
     color: white;
-    font-weight: bolder;
+    font-weight: 300;
     cursor: pointer;
+    font-family: 'moneygraphy-pixel';
 }
 
 

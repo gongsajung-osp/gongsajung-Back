@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, flash, redirect, url_for, ses
 from database import DBhandler
 import hashlib
 import sys
+from flask import jsonify
 
 application = Flask(__name__)
 application.config["SECRET_KEY"] = "helloosp"
@@ -100,41 +101,6 @@ def view_review():
     return render_template("review.html",reviews=reviews)
 
 
-
-
-
-# @application.route("/review/<product_name>")
-# def view_product_review(product_name):
-#     # 상품 이름으로 데이터베이스에서 상품 정보 가져오기
-#     product_details = DB.get_item_byname(product_name)
-    
-#     if not product_details:
-#         # 상품이 존재하지 않을 경우
-#         flash("상품을 찾을 수 없습니다.")
-#         return redirect(url_for("view_index"))
-    
-#     # review.html 렌더링
-#     return render_template("review.html", product_name=product_name, product_details=product_details)
-
-# @application.route("/review/<product_name>")
-# def review(product_name):
-#     # 데이터베이스에서 상품 정보 가져오기 (가정: `DB.get_item_byname` 사용)
-#     product_details = DB.get_item_byname(product_name)
-    
-#     if not product_details:
-#         # 상품이 없으면 오류 처리
-#         flash(f"상품 '{product_name}'을(를) 찾을 수 없습니다.")
-#         return redirect(url_for("index"))
-
-#     # review.html에 상품 데이터 전달
-#     return render_template("review.html", 
-#                            name=product_name, 
-#                            price=product_details['product_price'], 
-#                            shipping_cost=product_details.get('shipping_cost', '무료'),
-#                            short_description=product_details.get('short_description', '상세 설명이 없습니다.'),
-#                            main_category=product_details.get('main_category', '카테고리 없음'))
-
-
 @application.route("/review/<product_name>")
 def review(product_name):
     # 데이터베이스에서 상품 정보 가져오기
@@ -224,6 +190,25 @@ def reg_item_submit():
 
 
 # main/sub category, price 추가로 넘겨야 함
+
+
+
+
+@application.route("/delete_item")
+def delete_item():
+    item_name = request.args.get("item_name")  # 삭제 요청으로 전달받은 아이템 이름
+    
+    if not item_name:
+        return jsonify({"success": False, "message": "아이템 이름이 제공되지 않았습니다."}), 400
+    
+    # Firebase에서 아이템 삭제
+    success = DB.delete_item(item_name)
+    if success:
+        return jsonify({"success": True, "message": f"{item_name} 삭제 완료!"})
+    else:
+        return jsonify({"success": False, "message": "해당 아이템을 찾을 수 없습니다."}), 404
+
+
 
 
 @application.route("/submit_item_post", methods=["POST"])

@@ -91,13 +91,6 @@ class DBhandler:
         #특정 상품에 리뷰 추가
         self.db.child("reviews").child(item_name).push(review_data)
         return True
-    
-#    def get_reviews_by_item(self, item_name):
-        #특정 상품의 리뷰 가져오기
-#       reviews=self.db.child("reviews").child(item_name).get()
-#        if reviews.val() is None:
-#           return []
-#        return [review.val() for review in reviews.each()]
 
     def get_reviews_by_item(self, item_name):
         reviews = self.db.child("reviews").child(item_name).get()
@@ -110,3 +103,13 @@ class DBhandler:
             }
             for review in reviews.each()
         ]
+    
+    def delete_item(self, item_name):
+        try:
+            # Firebase에서 아이템 삭제
+            self.db.child("item").child(item_name).remove()  # 아이템 삭제
+            print(f"Item {item_name} deleted from database.")
+            return True
+        except Exception as e:
+            print(f"Error deleting item {item_name}: {e}")
+            return False

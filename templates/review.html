@@ -1,208 +1,200 @@
-{% extends "index_2.html" %}
-
-{% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/review.css') }}">
-{% endblock %}
-
-{% block ul %}
+{% extends "index_2.html" %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/review.css') }}"
+/>
+{% endblock %} {% block ul %}
 <div class="breadcrumb" id="moveCategory">
-    #{{ product_category }} <span class="breadcrumb-tag">#{{event_name}}</span>
+  #{{ product_category }} <span class="breadcrumb-tag">#{{event_name}}</span>
 </div>
 <div class="touched"></div>
-{% endblock %}
-
-{% block section %}
-
-
+{% endblock %} {% block section %}
 
 <!-- 상품 설명 추가 -->
 
 <div class="main-content">
-    <div class="about-product">
-        <!-- <div class="product-image"></div> -->
-        
-        
-        <div class="product-image">
-        <img src="{{ url_for('static', filename=img_path) }}" alt="{{ name }}"> </div>
+  <div class="about-product">
+    <!-- <div class="product-image"></div> -->
 
-        <h1 id="moveName">test</h1>
-        <div class="price-test" id="movePrice">test원</div>
-        <div class="shipping-test">배송비: </div>
+    <div class="product-image">
+      <img src="{{ url_for('static', filename=img_path) }}" alt="{{ name }}" />
+    </div>
 
+    <!-- <h1 id="moveName">test</h1>
+    <div class="price-test" id="movePrice">test원</div>
+    <div class="shipping-test">배송비:</div> -->
 
-        <div class="product-info">
-            <h2 id="moveName">{{ name }}</h2>
-            <div class="price" id="movePrice">{{ price }}원</div>
-            <div class="shipping">배송비: {{ shipping_cost }}</div>
+    <div class="product-info">
+      <h2 id="moveName">{{ name }}</h2>
+      <div class="price" id="movePrice">{{ price }}원</div>
+      <div class="shipping">배송비: {{ shipping_cost }}</div>
 
-            <div class="button-group">
-                <button>직거래</button>
-                <button>택배</button>
-            </div>
+      <div class="button-group">
+        <button>직거래</button>
+        <button>택배</button>
+      </div>
 
-            <div class="rating">
-                <span>★</span> 4.8
-            </div>
+      <div class="rating"><span>★</span> 4.8</div>
 
-            <!-- <div class="short_description">
+      <!-- <div class="short_description">
                 짧은 설명{{ short_description }}
             </div> -->
 
-            <!-- <div class="purchase-btn"> 
+      <!-- <div class="purchase-btn"> 
                 <form action="/buy_item" method="POST">
                     <input type="hidden" name="prodect_id" value="{{product_id}}">
                     <button type="submit">구매하기</button>
                 </form>
             </div> -->
 
-            <div class="purchase-btn" id="purchase-btn">
-                구매하기
-            </div>
+      <div class="purchase-btn" id="purchase-btn">구매하기</div>
+    </div>
+  </div>
+
+  <div id="purchase-popup1" style="display: none">
+    <p>구매하시겠습니까?</p>
+    <button id="confirm-purchase">구매</button>
+    <button id="cancel-purchase">취소</button>
+    <p></p>
+  </div>
+
+  <div id="purchase-popup2" style="display: none">
+    <p>구매가 확정되었습니다!</p>
+    <button id="move-btn"><a href="/history">구매내역 확인하기</a></button>
+    <p></p>
+  </div>
+
+  <div class="tabs">
+    <div class="tab tab-active" onclick="showTab('description', event)">
+      <span>상세 설명</span>
+    </div>
+    <div class="tab" onclick="showTab('reviews', event)">
+      <span>리뷰</span>
+    </div>
+    <div class="tab" onclick="showTab('seller-info', event)">
+      <span>판매자 정보</span>
+    </div>
+  </div>
+
+  <!-- 상세 설명 탭 -->
+  <div class="tab-content" id="description">
+    <pre>{{ product_explain }}</pre>
+  </div>
+
+  <!-- 리뷰 탭 -->
+  <div class="tab-content" id="reviews" style="display: none">
+    <div class="view-type">
+      <input type="radio" id="vt1" name="view-type" value="recent" />
+      <label for="vt1"></label>
+      <label for="vt1">최신순</label>
+      <input type="radio" id="vt2" name="view-type" value="high-rate" />
+      <label for="vt2"></label>
+      <label for="vt2">별점 높은 순</label>
+      <input type="radio" id="vt3" name="view-type" value="low-rate" />
+      <label for="vt3"></label>
+      <label for="vt3">별점 낮은 순</label>
+    </div>
+    {% for review in reviews %}
+    <div class="review-in">
+      <div class="writer-info">
+        <div class="profile-img"></div>
+        <div class="writer-info-in-in">
+          <p class="writer-name">{{ review.user_id }}</p>
+          <!--작성자 이름-->
+          <p class="writer-grade">등급: {{review.rating|int }}</p>
+          <!--별점-->
         </div>
+        <p class="writer-purchased">{{ review.item_name }}구매</p>
+        <!--상품 이름-->
+      </div>
     </div>
 
-    <div id="purchase-popup1" style="display: none;">
-        <p>구매하시겠습니까?</p>
-        <button id="confirm-purchase">구매</button>
-        <button id="cancel-purchase">취소</button>
-        <p></p>
+    <div class="rate-stars">
+      {% for i in range(review.rating) %} ★ {% endfor %}
+    </div>
+    <p class="review-content">{{ review.review_text }}</p>
+    <!--리뷰 내용-->
+
+    {% if review.review_image %}
+    <div class="review-pic-out">
+      <img
+        src="{{ url_for('static', filename=review.review_image) }}"
+        alt="리뷰 이미지"
+      />
+    </div>
+    {% endif %}
+
+    <div class="react">
+      <div class="react-heart">
+        <p class="heart-tag">♥</p>
+        <p class="heart-num">{{ review.likes | default(0) }}</p>
+        <!-- 좋아요 수 -->
+      </div>
+      <div class="react-comment">
+        <p class="comment-tag1">댓글</p>
+        <p class="comment-num">{{ review.comments | default(0) }}</p>
+        <!-- 댓글 수 -->
+        <p class="comment-tag2">개</p>
+      </div>
     </div>
 
-    <div id="purchase-popup2" style="display: none;">
-        <p>구매가 확정되었습니다!</p>
-        <button id="move-btn"><a href="/history">구매내역 확인하기</a></button>
-        <p></p>
+    <div class="view-comment" style="display: none">
+      <!--댓글 영역-->
     </div>
+  </div>
+  {% endfor %}
 
-
-    <div class="tabs">
-        <div class="tab tab-active" onclick="showTab('description', event)">
-            <span>상세 설명</span>
-        </div>
-        <div class="tab" onclick="showTab('reviews', event)">
-            <span>리뷰</span>
-        </div>
-        <div class="tab" onclick="showTab('seller-info', event)">
-            <span>판매자 정보</span>
-        </div>
+  <!-- 판매자 정보 탭 -->
+  <div class="tab-content" id="seller-info" style="display: none">
+    <div class="seller-info">
+      <div class="seller-profile">
+        <div class="profile-img"></div>
+        <p class="seller-name">닉네임</p>
+      </div>
+      <p class="seller-school">이화여자대학교 컴퓨터공학과(재학)</p>
+      <div id="seller-history">
+        <p class="seller-history">제nn회 이화여대 대동제</p>
+        <p class="seller-history">제n회 이화여대 종손</p>
+      </div>
+      <div id="seller-contact">
+        <p class="seller-contact">insta : @abcdef</p>
+        <p class="seller-contact">x : @abcdef</p>
+        <p class="seller-contact">mail : abcdef@gmail.com</p>
+      </div>
     </div>
-
-    <!-- 상세 설명 탭 -->
-    <div class="tab-content" id="description">
-        <pre>{{ product_explain }}</pre>
-    </div>
-
-
-    <!-- 리뷰 탭 -->
-    <div class="tab-content" id="reviews" style="display: none;">
-        <div class="view-type">
-            <input type="radio" id="vt1" name="view-type" value="recent">
-            <label for="vt1"></label>
-            <label for="vt1">최신순</label>
-            <input type="radio" id="vt2" name="view-type" value="high-rate">
-            <label for="vt2"></label>
-            <label for="vt2">별점 높은 순</label>
-            <input type="radio" id="vt3" name="view-type" value="low-rate">
-            <label for="vt3"></label>
-            <label for="vt3">별점 낮은 순</label>
-        </div>
-        {% for review in reviews %}
-        <div class="review-in">
-            <div class="writer-info">
-                <div class="profile-img"></div>
-                <div class="writer-info-in-in">
-                    <p class="writer-name">{{ review.user_id }}</p> <!--작성자 이름-->
-                    <p class="writer-grade">등급: {{review.rating }}</p><!--별점-->
-                </div>
-                <p class="writer-purchased">{{ review.item_name}}구매</p><!--상품 이름-->
-            </div>
-        </div>
-
-        <div class="rate-stars">
-            {% for i in range(review.rating) %}
-            ★
-            {% endfor %}
-        </div>
-        <p class="review-content">{{review.review_text}}</p><!--리뷰 내용-->
-
-        {% if review.review_image %}
-        <div class="review-pic-out">
-            <img src="{{ url_for('static', filename=review.review_image) }}" alt="리뷰 이미지">
-        </div>
-        {% endif %}
-
-
-        <div class="react">
-            <div class="react-heart">
-                <p class="heart-tag">♥</p>
-                <p class="heart-num">{{ review.likes | default(0) }}</p> <!-- 좋아요 수 -->
-            </div>
-            <div class="react-comment">
-                <p class="comment-tag1">댓글</p>
-                <p class="comment-num">{{ review.comments | default(0) }}</p> <!-- 댓글 수 -->
-                <p class="comment-tag2">개</p>
-            </div>
-        </div>
-
-        <div class="view-comment" style="display: none;">
-            <!--댓글 영역-->
-        </div>
-    </div>
-    {% endfor %}
-
-
-    <!-- 판매자 정보 탭 -->
-    <div class="tab-content" id="seller-info" style="display: none;">
-        <div class="seller-info">
-            <div class="seller-profile">
-                <div class="profile-img"></div>
-                <p class="seller-name">닉네임</p>
-            </div>
-            <p class="seller-school">이화여자대학교 컴퓨터공학과(재학)</p>
-            <div id="seller-history">
-                <p class="seller-history">제nn회 이화여대 대동제</p>
-                <p class="seller-history">제n회 이화여대 종손</p>
-            </div>
-            <div id="seller-contact">
-                <p class="seller-contact">insta : @abcdef</p>
-                <p class="seller-contact">x : @abcdef</p>
-                <p class="seller-contact">mail : abcdef@gmail.com</p>
-            </div>
-        </div>
-    </div>
-
+  </div>
 </div>
 
 <aside class="relative-product">
-    <p class="aside-title">연관 상품</p>
-    <div class="relative-product-detail">
-        <div class="rp-img"></div>
-        <div class="rp-detail-right">
-            <div class="rp-name">상품명</div>
-            <div class="rp-price">10,000원</div>
-        </div>
+  <p class="aside-title">연관 상품</p>
+  <div class="relative-product-detail">
+    <div class="rp-img"></div>
+    <div class="rp-detail-right">
+      <div class="rp-name">상품명</div>
+      <div class="rp-price">10,000원</div>
     </div>
-    <div class="relative-product-detail">
-        <div class="rp-img"></div>
-        <div class="rp-detail-right">
-            <div class="rp-name">상품명</div>
-            <div class="rp-price">10,000원</div>
-        </div>
+  </div>
+  <div class="relative-product-detail">
+    <div class="rp-img"></div>
+    <div class="rp-detail-right">
+      <div class="rp-name">상품명</div>
+      <div class="rp-price">10,000원</div>
     </div>
-    <div class="relative-product-detail">
-        <div class="rp-img"></div>
-        <div class="rp-detail-right">
-            <div class="rp-name">상품명</div>
-            <div class="rp-price">10,000원</div>
-        </div>
+  </div>
+  <div class="relative-product-detail">
+    <div class="rp-img"></div>
+    <div class="rp-detail-right">
+      <div class="rp-name">상품명</div>
+      <div class="rp-price">10,000원</div>
     </div>
-    <div class="relative-product-detail">
-        <div class="rp-img"></div>
-        <div class="rp-detail-right">
-            <div class="rp-name">상품명</div>
-            <div class="rp-price">10,000원</div>
-        </div>
+  </div>
+  <div class="relative-product-detail">
+    <div class="rp-img"></div>
+    <div class="rp-detail-right">
+      <div class="rp-name">상품명</div>
+      <div class="rp-price">10,000원</div>
     </div>
+  </div>
 </aside>
 
 <script src="{{ url_for('static', filename='js/review.js') }}"></script>

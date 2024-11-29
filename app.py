@@ -138,7 +138,10 @@ def review(product_name):
         flash(f"상품 '{product_name}'을(를) 찾을 수 없습니다.")
         return redirect(url_for("view_index"))
     
-    reviews = DB.get_item_byname(product_name)
+    #reviews = DB.get_item_byname(product_name)
+    reviews = DB.get_reviews_by_item(product_name)
+
+
 
     # review.html에 상품 데이터 전달
     return render_template(
@@ -150,6 +153,7 @@ def review(product_name):
         shipping_cost=product_details.get("shipping_cost", "무료"),
         product_category=product_details.get("product_category", "카테고리 없음"),
         event_name=product_details.get("event_name", "행사 미정"),
+        reviews=reviews #추가한코드
     )
 
 

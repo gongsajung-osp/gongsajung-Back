@@ -92,9 +92,21 @@ class DBhandler:
         self.db.child("reviews").child(item_name).push(review_data)
         return True
     
-    def get_reviews_by_item(self, item_name):
+#    def get_reviews_by_item(self, item_name):
         #특정 상품의 리뷰 가져오기
-        reviews=self.db.child("reviews").child(item_name).get()
+#       reviews=self.db.child("reviews").child(item_name).get()
+#        if reviews.val() is None:
+#           return []
+#        return [review.val() for review in reviews.each()]
+
+    def get_reviews_by_item(self, item_name):
+        reviews = self.db.child("reviews").child(item_name).get()
         if reviews.val() is None:
             return []
-        return [review.val() for review in reviews.each()]
+        return [
+            {
+                **review.val(),
+                "rating": int(review.val()["rating"]),  # rating을 정수로 변환
+            }
+            for review in reviews.each()
+        ]

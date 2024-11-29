@@ -21,11 +21,11 @@ tabs.forEach(tab => {
   tab.addEventListener('click', function () {
     tabs.forEach(t => t.classList.remove('tab-active'));
     this.classList.add('tab-active');
-  })
+  });
 });
 
 function showTab(tabId, event) {
-  const contents = document.querySelectorAll('.tab-content')
+  const contents = document.querySelectorAll('.tab-content');
   contents.forEach(content => {
     content.style.display = 'none';
   });
@@ -33,15 +33,6 @@ function showTab(tabId, event) {
   const activeTab = document.getElementById(tabId);
   if (activeTab) {
     activeTab.style.display = 'block';
-  }
-
-  const tabs = document.querySelectorAll('.tab');
-  tabs.forEach(tab => {
-    tab.classList.remove('active');
-  });
-
-  if (event) {
-    event.currentTarget.classList.add('active');
   }
 }
 

@@ -16,17 +16,17 @@ document.querySelectorAll(".react-comment").forEach((commentButton, index) => {
 //tab 전환
 const tabs = document.querySelectorAll(".tab");
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', function () {
-    tabs.forEach(t => t.classList.remove('tab-active'));
-    this.classList.add('tab-active');
+tabs.forEach((tab) => {
+  tab.addEventListener("click", function () {
+    tabs.forEach((t) => t.classList.remove("tab-active"));
+    this.classList.add("tab-active");
   });
 });
 
 function showTab(tabId, event) {
-  const contents = document.querySelectorAll('.tab-content');
-  contents.forEach(content => {
-    content.style.display = 'none';
+  const contents = document.querySelectorAll(".tab-content");
+  contents.forEach((content) => {
+    content.style.display = "none";
   });
 
   const activeTab = document.getElementById(tabId);
@@ -59,8 +59,6 @@ document.getElementById("purchase-btn").onclick = function () {
   document.getElementById("purchase-popup1").style.display = "block";
 };
 
-
-
 //구매 확정 - 구매 아이템 데이터 전송
 document.getElementById("confirm-purchase").onclick = function () {
   const contentName = document.getElementById("moveName").textContent;
@@ -86,3 +84,65 @@ document.getElementById("confirm-purchase").onclick = function () {
 document.getElementById("cancel-purchase").onclick = function () {
   document.getElementById("purchase-popup1").style.display = "none";
 };
+
+//좋아요
+
+function showHeart() {
+  const name = $("#heart").data("name"); //추가코드
+
+  $.ajax({
+    type: "GET",
+    url: "/show_heart/" + encodeURIComponent(name) + "/",
+    data: {},
+    success: function (response) {
+      let my_heart = response["my_heart"];
+      if (my_heart["interested"] == "Y") {
+        $("#heart").css("color", "red");
+        $("#heart").attr("onclick", "unlike()");
+      } else {
+        $("#heart").css("color", "grey");
+        $("#heart").attr("onclick", "like()");
+      }
+      //alert("showheart!")
+    },
+  });
+}
+function like() {
+  const name = $("#heart").data("name"); //추가
+
+  $("#heart").css("color", "red"); //추가
+  $("#heart").off("click").on("click", unlike);
+
+  $.ajax({
+    type: "POST",
+    url: "/like/" + encodeURIComponent(name) + "/",
+    data: {
+      interested: "Y",
+    },
+    success: function (response) {
+      alert(response["msg"]);
+      window.location.reload();
+    },
+  });
+}
+function unlike() {
+  const name = $("#heart").data("name");
+
+  $("#heart").css("color", "grey");
+  $("#heart").off("click").on("click", like);
+
+  $.ajax({
+    type: "POST",
+    url: "/unlike/" + encodeURIComponent(name) + "/",
+    data: {
+      interested: "N",
+    },
+    success: function (response) {
+      alert(response["msg"]);
+      window.location.reload();
+    },
+  });
+}
+$(document).ready(function () {
+  showHeart();
+});

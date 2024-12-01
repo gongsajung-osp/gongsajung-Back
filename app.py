@@ -1,8 +1,7 @@
-from flask import Flask, render_template, request, flash, redirect, url_for, session
+from flask import Flask, render_template, request, flash, redirect, url_for, session, jsonify
 from database import DBhandler
 import hashlib
 import sys
-from flask import jsonify
 
 application = Flask(__name__)
 application.config["SECRET_KEY"] = "helloosp"
@@ -126,7 +125,8 @@ def review(product_name):
         shipping_cost=product_details.get("shipping_cost", "무료"),
         product_category=product_details.get("product_category", "카테고리 없음"),
         event_name=product_details.get("event_name", "행사 미정"),
-        reviews=reviews #추가한코드
+        reviews=reviews, #추가한코드
+        item_name=product_name #좋아요기능 추가코드
     )
 
 
@@ -334,4 +334,22 @@ def buy_item():
         # 에러 처리
         flash(f"구매 처리 중 문제가 발생했습니다: {str(e)}")
         return redirect(url_for("view_product", product_id=product_id))
+    
+#좋아요 기능
+@application.route('/show_heart/<name>/', methods=['GET'])
+def show_heart(name):
+    print(f"Received name in show_heart: {name}") #디버깅
+    my_heart = DB.get_heart_byname(session['user_id'],name) 
+    return jsonify({'my_heart': my_heart})
+
+@application.route('/like/<name>/', methods=['POST'])
+def like(name):
+    my_heart = DB.update_heart(session['user_id'],'Y',name)
+    return jsonify({'msg': '좋아요 완료!'})
+
+@application.route('/unlike/<name>/', methods=['POST'])
+def unlike(name):
+    my_heart = DB.update_heart(session['user_id'],'N',name) 
+    return jsonify({'msg': '좋아요 취소 완료!'})
+    
 

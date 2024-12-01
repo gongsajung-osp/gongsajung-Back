@@ -1,15 +1,15 @@
 @font-face {
   font-family: "moneygraphy-pixel";
   src: url("../fonts/Moneygraphy-Pixel.woff2") format("woff2"),
-  url("../fonts/Moneygraphy-Pixel.woff") format("woff"),
-  url("../fonts/Moneygraphy-Pixel.ttf") format("truetype");
+    url("../fonts/Moneygraphy-Pixel.woff") format("woff"),
+    url("../fonts/Moneygraphy-Pixel.ttf") format("truetype");
   font-weight: normal;
 }
 
 .category-nav {
   display: flex;
   justify-content: space-around;
-  background-color: #FFA500;
+  background-color: #ffa500;
   padding: 10px 0;
   margin-top: 20px;
 }
@@ -73,8 +73,10 @@
 
 .product-image img {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -97,4 +99,11 @@
   display: block;
 }
 
+#heart {
+  color: grey;
+  font-size: 50px;
+}
 
+#heart.red {
+  color: red;
+}

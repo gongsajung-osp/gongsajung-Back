@@ -1,13 +1,12 @@
-{% extends "index_2.html" %}
-
-{% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/review.css') }}">
-{% endblock %}
-
-{% block ul %}
+{% extends "index_2.html" %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/review.css') }}"
+/>
+{% endblock %} {% block ul %}
 <div class="breadcrumb">
-    <span class="breadcrumb" id="moveCategory">#{{ product_category }}</span>
-     <span class="breadcrumb-tag">#{{event_name}}</span>
+  <span class="breadcrumb" id="moveCategory">#{{ product_category }}</span>
+  <span class="breadcrumb-tag">#{{event_name}}</span>
 </div>
 <div class="touched"></div>
 {% endblock %} {% block section %}
@@ -21,13 +20,13 @@
     <div class="product-image">
       <img src="{{ url_for('static', filename=img_path) }}" alt="{{ name }}" />
     </div>
-        <!-- <h1 id="moveName">test</h1>
-        <div class="price-test" id="movePrice">test원</div>
-        <div class="shipping-test">배송비: </div> -->
+    <!-- <h1 id="moveName">test</h1>
+          <div class="price-test" id="movePrice">test원</div>
+          <div class="shipping-test">배송비: </div> -->
 
     <!-- <h1 id="moveName">test</h1>
-    <div class="price-test" id="movePrice">test원</div>
-    <div class="shipping-test">배송비:</div> -->
+      <div class="price-test" id="movePrice">test원</div>
+      <div class="shipping-test">배송비:</div> -->
 
     <div class="product-info">
       <h2 id="moveName">{{ name }}</h2>
@@ -37,20 +36,21 @@
       <div class="button-group">
         <button>직거래</button>
         <button>택배</button>
+        <i id="heart" class="fa fa-heart" data-name="{{ item_name }}"></i>
       </div>
 
       <div class="rating"><span>★</span> 4.8</div>
 
       <!-- <div class="short_description">
-                짧은 설명{{ short_description }}
-            </div> -->
+                  짧은 설명{{ short_description }}
+              </div> -->
 
-      <!-- <div class="purchase-btn"> 
-                <form action="/buy_item" method="POST">
-                    <input type="hidden" name="prodect_id" value="{{product_id}}">
-                    <button type="submit">구매하기</button>
-                </form>
-            </div> -->
+      <!-- <div class="purchase-btn">
+                  <form action="/buy_item" method="POST">
+                      <input type="hidden" name="prodect_id" value="{{product_id}}">
+                      <button type="submit">구매하기</button>
+                  </form>
+              </div> -->
 
       <div class="purchase-btn" id="purchase-btn">구매하기</div>
     </div>
@@ -127,8 +127,6 @@
     {% endif %}
     <p class="review-content">{{ review.review_text }}</p>
     <!--리뷰 내용-->
-
-    
 
     <div class="react">
       <div class="react-heart">

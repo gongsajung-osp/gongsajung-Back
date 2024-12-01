@@ -1,116 +1,149 @@
 <!DOCTYPE html>
-<html lang="en" style="overflow: auto;">
-
-<head>
+<html lang="en" style="overflow: auto">
+  <head>
     <title>main</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
     {% endblock %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/global2.css') }}">
-</head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global2.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awes
+ome.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <header>
-            <div class="left">
-                <span class="setting">
-                  <img id="bubble" src="/static/images/bubble.png" alt="thinking bubble">
-                  <img id="tiger" src="/static/images/tiger.png" alt="setting icon" onclick="settingToggleDropdown(event)">
-        
-                  <ul class="dropdown-setting">
-                    {% if session['user_id'] %}
-                    <li><b>{{session['user_id']}}님 반갑습니다!</b><br><br><br><a href="/logout"> 로그아웃</a></li><br>
-                    {% else %}
-                    <li><a href="/login">로그인</a></li><br>
-                    {% endif %}
-                    <li><a href="/reg_items">상품 등록</a></li><br>
-                    <li><a href="/item_manage">상품 관리</a></li><br>
-                    <li><a href="/history">구매 내역</a></li><br>
-                    <li><a href="/profile">내 프로필</a></li>
-                  </ul>
-                </span>
-              </div>
-            <div class="header-top">
-                <div class="logo">
-                    <a href="/index">
-                        <img src="/static/images/logo.png" alt="logo" class="logoimg">
-                    </a>
-                </div>
-                <div class="search">
-                    <form class="search-box" action="" method="">
-                        <input class="search-txt" type="text" name="" placeholder="검색...">
-                        <button class="search-btn" type="submit">
-                            <img src="/static/images/search-icon.png" alt="search-icon">
-                        </button>
-                    </form>
-                </div>
-            </div>
+      <header>
+        <div class="left">
+          <span class="setting">
+            <img
+              id="bubble"
+              src="/static/images/bubble.png"
+              alt="thinking bubble"
+            />
+            <img
+              id="tiger"
+              src="/static/images/tiger.png"
+              alt="setting icon"
+              onclick="settingToggleDropdown(event)"
+            />
 
-            {% block ul %}
-            <ul class="nav">
-                <li class="">
-                    <a href="">전체</a>
-                </li>
-                <li class>
-                    <a href="">스티커</a>
-                </li>
-                <li class>
-                    <a href="">문구</a>
-                </li>
-                <li class>
-                    <a href="">엽서</a>
-                </li>
-                <li class>
-                    <a href="">도자기</a>
-                </li>
-                <li class>
-                    <a href="">생활용품</a>
-                </li>
-                <li class>
-                    <a href="">먹거리</a>
-                </li>
-                <li class>
-                    <a href="">포스터</a>
-                </li>
-                <li class>
-                    <a href="">유리</a>
-                </li>
-                <li class>
-                    <a href="">비즈</a>
-                </li>
-                <li class>
-                    <a href="">가죽</a>
-                </li>
-                <li class>
-                    <a href="">기타</a>
-                </li>
+            <ul class="dropdown-setting">
+              {% if session['user_id'] %}
+              <li>
+                <b>{{session['user_id']}}님 반갑습니다!</b><br /><br /><br /><a
+                  href="/logout"
+                >
+                  로그아웃</a
+                >
+              </li>
+              <br />
+              {% else %}
+              <li><a href="/login">로그인</a></li>
+              <br />
+              {% endif %}
+              <li><a href="/reg_items">상품 등록</a></li>
+              <br />
+              <li><a href="/item_manage">상품 관리</a></li>
+              <br />
+              <li><a href="/history">구매 내역</a></li>
+              <br />
+              <li><a href="/profile">내 프로필</a></li>
             </ul>
-            {% endblock %}
-        </header>
-        <section>
-            <div class="menu">
-                <div class="menu-reg_items">
-                  <a href="/reg_items">상품 등록</a>
-                </div>
-                <div class="menu-history">
-                  <a href="/history">구매 내역</a>
-                </div>
-                <div class="menu-item_manage">
-                  <a href="/item_manage">상품 관리</a>
-                </div>
-                <div class="menu-profile">
-                  <a href="/profile">내 프로필</a>
-                </div>
-              </div>
+          </span>
+        </div>
+        <div class="header-top">
+          <div class="logo">
+            <a href="/index">
+              <img src="/static/images/logo.png" alt="logo" class="logoimg" />
+            </a>
+          </div>
+          <div class="search">
+            <form class="search-box" action="" method="">
+              <input
+                class="search-txt"
+                type="text"
+                name=""
+                placeholder="검색..."
+              />
+              <button class="search-btn" type="submit">
+                <img src="/static/images/search-icon.png" alt="search-icon" />
+              </button>
+            </form>
+          </div>
+        </div>
 
-            {% block section %}
+        {% block ul %}
+        <ul class="nav">
+          <li class="">
+            <a href="">전체</a>
+          </li>
+          <li class>
+            <a href="">스티커</a>
+          </li>
+          <li class>
+            <a href="">문구</a>
+          </li>
+          <li class>
+            <a href="">엽서</a>
+          </li>
+          <li class>
+            <a href="">도자기</a>
+          </li>
+          <li class>
+            <a href="">생활용품</a>
+          </li>
+          <li class>
+            <a href="">먹거리</a>
+          </li>
+          <li class>
+            <a href="">포스터</a>
+          </li>
+          <li class>
+            <a href="">유리</a>
+          </li>
+          <li class>
+            <a href="">비즈</a>
+          </li>
+          <li class>
+            <a href="">가죽</a>
+          </li>
+          <li class>
+            <a href="">기타</a>
+          </li>
+        </ul>
+        {% endblock %}
+      </header>
+      <section>
+        <div class="menu">
+          <div class="menu-reg_items">
+            <a href="/reg_items">상품 등록</a>
+          </div>
+          <div class="menu-history">
+            <a href="/history">구매 내역</a>
+          </div>
+          <div class="menu-item_manage">
+            <a href="/item_manage">상품 관리</a>
+          </div>
+          <div class="menu-profile">
+            <a href="/profile">내 프로필</a>
+          </div>
+        </div>
 
-            {% endblock section %}
-        </section>
+        {% block section %} {% endblock section %}
+      </section>
     </div>
     <script src="{{ url_for('static', filename='js/global.js') }}"></script>
-</body>
-
+  </body>
 </html>

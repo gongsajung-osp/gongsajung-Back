@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Tiger Market{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<style>
+    .nav10 {
+        background-color: #eeeeee;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+  {% block product %}
+  <section>
+    
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/비즈1.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">체리 반지</span>
+            <span class="product-price">1,500원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/비즈2.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">크리스마스 반지 세트</span>
+            <span class="product-price">3,000원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/비즈3.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">데이지 봄 반지</span>
+            <span class="product-price">1,000원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/비즈4.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">black ring set</span>
+            <span class="product-price">4,500원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/비즈5.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">에잇볼 키링</span>
+            <span class="product-price">3,500원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/비즈6.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">행운의 네잎클로버 키링</span>
+            <span class="product-price">2,000원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/비즈7.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">클로버 키링</span>
+            <span class="product-price">1,500원</span>
+          </div>
+        </a>
+      </div>
+      
+      
+  </section>
+  {% endblock %}
+</div>
+<script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+{% endblock %}
+

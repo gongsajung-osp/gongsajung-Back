@@ -29,3 +29,12 @@ window.addEventListener('click', function (e) {
     });
   }
 });
+
+// const navs = document.querySelectorAll(".nav");
+
+// navs.forEach((nav) => {
+//   nav.addEventListener("click", function () {
+//     navs.forEach((t) => t.classList.remove("nav-active"));
+//     this.classList.add("nav-active");
+//   });
+// });

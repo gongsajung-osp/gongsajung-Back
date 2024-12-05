@@ -100,6 +100,8 @@
       <label for="vt3">별점 낮은 순</label>
     </div>
     {% for review in reviews %}
+    <div class="review-r">
+
     <div class="review-in">
       <div class="writer-info">
         <div class="profile-img"></div>
@@ -108,8 +110,8 @@
           <!--작성자 이름-->
           <p class="writer-grade">등급: {{review.rating|int }}</p>
           <!--별점-->
+          <p class="writer-purchased">{{ review.item_name }} 구매</p>
         </div>
-        <p class="writer-purchased">{{ review.item_name }}구매</p>
         <!--상품 이름-->
       </div>
     </div>
@@ -146,6 +148,7 @@
       <!--댓글 영역-->
     </div>
   </div>
+</div>
   {% endfor %}
 
   <!-- 판매자 정보 탭 -->
@@ -172,31 +175,39 @@
 <aside class="relative-product">
   <p class="aside-title">연관 상품</p>
   <div class="relative-product-detail">
-    <div class="rp-img"></div>
+    <div class="rp-img">
+      <img src="/static/images/비즈4.png" alt="">
+    </div>
     <div class="rp-detail-right">
-      <div class="rp-name">상품명</div>
-      <div class="rp-price">10,000원</div>
+      <div class="rp-name">black ring set</div>
+      <div class="rp-price">4,500원</div>
     </div>
   </div>
   <div class="relative-product-detail">
-    <div class="rp-img"></div>
+    <div class="rp-img">
+      <img src="/static/images/비즈5.png" alt="">
+    </div>
     <div class="rp-detail-right">
-      <div class="rp-name">상품명</div>
-      <div class="rp-price">10,000원</div>
+      <div class="rp-name">에잇볼 키링</div>
+      <div class="rp-price">3,500원</div>
     </div>
   </div>
   <div class="relative-product-detail">
-    <div class="rp-img"></div>
+    <div class="rp-img">
+      <img src="/static/images/비즈1.png" alt="">
+    </div>
     <div class="rp-detail-right">
-      <div class="rp-name">상품명</div>
-      <div class="rp-price">10,000원</div>
+      <div class="rp-name">체리 반지</div>
+      <div class="rp-price">2,000원</div>
     </div>
   </div>
   <div class="relative-product-detail">
-    <div class="rp-img"></div>
+    <div class="rp-img">
+      <img src="/static/images/비즈7.png" alt="">
+    </div>
     <div class="rp-detail-right">
-      <div class="rp-name">상품명</div>
-      <div class="rp-price">10,000원</div>
+      <div class="rp-name">클로버 키링</div>
+      <div class="rp-price">1,500원</div>
     </div>
   </div>
 </aside>

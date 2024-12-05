@@ -27,7 +27,42 @@ def view_base():
 def view_index():
     items = DB.get_items() # DB 에서 모든 상품 조회
     return render_template("index.html",items=items)
-    
+
+@application.route("/index_sticker")
+def view_sticker():
+    return render_template("index_sticker.html")
+
+@application.route("/index_stationery")
+def view_stationery():
+    return render_template("index_stationery.html")
+
+@application.route("/index_postcard")
+def view_postcard():
+    return render_template("index_postcard.html")
+
+@application.route("/index_ceramic")
+def view_ceramic():
+    return render_template("index_ceramic.html")
+
+@application.route("/index_life")
+def view_life():
+    return render_template("index_life.html")
+
+@application.route("/index_food")
+def view_food():
+    return render_template("index_food.html")
+
+@application.route("/index_poster")
+def view_poster():
+    return render_template("index_poster.html")
+
+@application.route("/index_glass")
+def view_glass():
+    return render_template("index_glass.html")
+
+@application.route("/index_beads")
+def view_beads():
+    return render_template("index_beads.html")
 
 @application.route("/login")
 def view_login():

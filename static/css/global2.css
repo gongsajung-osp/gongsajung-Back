@@ -5,6 +5,16 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: "moneygraphy-pixel";
+    src: url("../fonts/Moneygraphy-Pixel.woff2") format("woff2"),
+    url("../fonts/Moneygraphy-Pixel.woff") format("woff"),
+    url("../fonts/Moneygraphy-Pixel.ttf") format("truetype");
+    font-weight: normal;
+  }
+
+
+
 input {
     font-family: 'Pretendard-Regular';
     src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -55,6 +65,7 @@ body {
 }
 
 .menu {
+    font-family: "moneygraphy-pixel";
     display: flex;
     justify-content: center;
     align-items: center;

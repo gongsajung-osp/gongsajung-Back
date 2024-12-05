@@ -1,3 +1,26 @@
+
+@font-face {
+  font-family: "moneygraphy-pixel";
+  src: url("../fonts/Moneygraphy-Pixel.woff2") format("woff2"),
+  url("../fonts/Moneygraphy-Pixel.woff") format("woff"),
+  url("../fonts/Moneygraphy-Pixel.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Ownglyph_ParkDaHyun';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GangwonEduSaeeum_OTFMediumA';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduSaeeum_OTFMediumA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 #slideShow * {
   margin: 0;
   padding: 0;
@@ -67,17 +90,86 @@
   margin: 0 auto;
 }
 
-.info {
+/* .info {
   display: block;
   border-radius: 10px;
   border: 1px solid #333;
   height: 200px;
   padding: 30px !important;
+} */
+
+.mid {
+  font-family: 'GangwonEduSaeeum_OTFMediumA';
+  font-size: 1.9rem;
+}
+
+.mid h1 {
+  font-family: "moneygraphy-pixel" !important;
+}
+
+.mid span {
+  font-size: 2.3rem;
+  font-weight: bolder;
+}
+
+/* .info3 {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  height: 200px;
+  padding: 30px;
+  line-height: 40px;
+  background-color: #ffcf9c;
+} */
+
+.info1, .info3 {
+  display: flex;
+  position: relative;
+  margin: 20px;
+  padding: 30px 30px 30px 45px;
+  width:600px; 
+  line-height: 40px;
+  align-items: center; display: flex;
+  text-align: left;height:200px;
+  color: #FFF; border-radius: 30px;
+  background-color: #000;
+}
+
+
+.info1:after, .info3:after {
+  content:""; position: absolute;
+  top: 100px; left: -28px;
+  border-right: 30px solid #000;
+  border-top: 10px solid transparent; border-bottom: 10px solid transparent;
+}
+
+.info2, .info4 {
+  float: right;
+  position: relative;
+  display: flex;
+  margin: 20px;
+  padding: 30px 45px 30px 30px;
+  width:600px; 
+  line-height: 40px;
+  align-items: center;
+  text-align: right;
+  justify-content: right;
+  height: 200px;
+  color: #FFF; border-radius: 30px;
+  background-color: #fea84d;
+}
+
+.info2:after, .info4:after {
+  content:""; position: absolute;
+  top: 100px; right: -28px;
+  border-left: 30px solid #fea84d;
+  border-top: 10px solid transparent; border-bottom: 10px solid transparent;
 }
 
 footer {
+  display: flex;
   height: 200px;
   background-color: rgb(243, 243, 243);
   padding: 50px !important;
-  margin-top: 50px !important;
+  margin-top: 950px !important;
 }

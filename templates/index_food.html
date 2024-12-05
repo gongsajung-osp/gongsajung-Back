@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Tiger Market{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<style>
+    .nav7 {
+        background-color: #eeeeee;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+  {% block product %}
+  <section>
+    
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/먹거리1.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">소금빵</span>
+            <span class="product-price">3,000원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/먹거리2.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">클로버 마카롱</span>
+            <span class="product-price">3,500원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/먹거리3.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">수제 바닐라 푸딩</span>
+            <span class="product-price">4,000원</span>
+          </div>
+        </a>
+      </div>
+      
+      
+      
+  </section>
+  {% endblock %}
+</div>
+<script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+{% endblock %}
+

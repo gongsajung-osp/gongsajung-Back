@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Tiger Market{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<style>
+    .nav6 {
+        background-color: #eeeeee;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+  {% block product %}
+  <section>
+    
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/고양이컵.jpg" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">고양이 머그컵</span>
+            <span class="product-price">11,000원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/생활1.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">고양이 안경닦이</span>
+            <span class="product-price">5,000원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/생활2.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">뜨개 동물 코스터</span>
+            <span class="product-price">7,500원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/생활3.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">납작 동물 컵받침</span>
+            <span class="product-price">6,000원</span>
+          </div>
+        </a>
+      </div>
+      
+      
+  </section>
+  {% endblock %}
+</div>
+<script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+{% endblock %}
+

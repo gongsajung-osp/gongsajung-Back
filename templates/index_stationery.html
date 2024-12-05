@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Tiger Market{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<style>
+    .nav3 {
+        background-color: #eeeeee;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+  {% block product %}
+  <section>
+    
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/문구1.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">미피 볼펜 세트</span>
+            <span class="product-price">13,000원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/문구2.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">클로버 클립</span>
+            <span class="product-price">2,000원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/문구3.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">개굴개굴 볼펜</span>
+            <span class="product-price">3,500원</span>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="">
+          <div class="product-image">
+            <img src="/static/images/문구4.png" alt="">
+          </div>
+          <!-- 상품 정보 -->
+          <div class="product-info">
+            <span class="product-name">식빵 고양이 필통</span>
+            <span class="product-price">8,000원</span>
+          </div>
+        </a>
+      </div>
+      
+      
+  </section>
+  {% endblock %}
+</div>
+<script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+{% endblock %}
+

@@ -41,9 +41,20 @@
 .purchased-img {
     width: 100px;
     height: 100px;
+    position: relative;
     border: 1px solid #cccccc;
     background-color: #e6e6e6;
+    overflow: hidden;
 }
+
+.purchased-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
 .purchased-info-in {
     margin-left: 10px;

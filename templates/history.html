@@ -24,9 +24,18 @@
         <div class="product-category" id="received-category">#카테고리</div>
         <div class="product-price" id="received-price">5,000원</div>
         <div class="history-btn">
-          <a href="/reg_reviews_tomato">
+          {% if items %}
+            {% for item_name, item in items.items() %}
+          <a href="/write_review/{{ item_name }}">
+            {% endfor %}
+            {% else %}
+            <p class="no-items">등록된 상품이 없습니다.</p>
+            {% endif %}
             <button class="review-write-btn">리뷰 작성</button>
           </a>
+          <!-- <button class="review-write-btn" onclick="window.location.href='/write_review/{{ item_name }}';">리뷰
+            작성</button> -->
+            
         </div>
       </div>
     </div>
@@ -40,7 +49,9 @@
             <div class="history-item">
               <a href="/review/{{ item_name }}">
                 <div class="purchased-img">
-                  <img src="{{ url_for('static', filename=item.img_path) }}" alt="{{ item.product_category }}">
+                <!-- <img src="{{ url_for('static', filename=item.img_path) }}" alt="{{ item.product_category }}"> -->
+                <img src="{{ url_for('static', filename=order['item_image']) }}" alt="{{ order['item_name'] }}">
+
                 </div>
               </a>
               <div class="purchased-info-in">

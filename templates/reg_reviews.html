@@ -15,7 +15,8 @@
         <div class="line"></div>
         <div class="purchased-info">
             <div class="purchased-img">
-                <img src="{{ url_for('static', filename='images/items/' + order['item_image']) }}" alt="상품 이미지">
+                
+                <img src="{{ url_for('static', filename=order['item_image']) }}" alt="{{ order['item_name'] }}">
             </div>
             <div class="purchased-info-in">
                 <div class="purchased-name">{{ order['item_name'] }}</div>

@@ -188,6 +188,11 @@ def view_history():
     
     # 로그인된 경우 Firebase에서 상품 데이터 가져오기
     items = DB.get_items()
+
+    for item in items.values():
+        # 'images/items/' 경로를 제거하고 파일명만 남기기
+        item['img_path'] = item['img_path'].split('/')[-1]
+    
     
     return render_template("history.html", items=items)
 
@@ -313,6 +318,8 @@ def write_review(item_name):
     db_handler = DBhandler()  # Firebase DB 핸들러 인스턴스 생성
     item_data = db_handler.get_item_byname(item_name)
 
+    print("item_data", item_data)
+
     if not item_data:
         # 상품이 없을 경우
         flash("상품을 찾을 수 없습니다.")
@@ -321,7 +328,7 @@ def write_review(item_name):
     # `order` 객체 생성 (템플릿에서 사용하는 데이터)
     order_data = {
         "item_name": item_name,
-        "item_image": item_data.get("img_path", "images/default.jpg"),  # 이미지 경로
+        "item_image": item_data.get("img_path"),
         "order_date": "2024-11-24",  # 테스트용 데이터
         "delivery_date": "2024-11-26",  # 테스트용 데이터
         "item_options": "기본 옵션",  # 예시 데이터
